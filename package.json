@@ -1,0 +1,36 @@
+{
+  "name": "react-tailwind-datetime-picker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "author": "Ludvig Lundh",
+  "license": "MIT",
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.3",
+    "@types/node": "18.14.0",
+    "@types/react-dom": "^18.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
+    "autoprefixer": "^10.4.13",
+    "dayjs": "^1.11.7",
+    "eslint": "^8.34.0",
+    "eslint-config": "^0.3.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "next": "^13.1.6",
+    "postcss": "^8.4.21",
+    "prettier": "^2.8.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwind-scrollbar": "^2.1.0",
+    "tailwindcss": "^3.2.7",
+    "typescript": "^4.9.5"
+  }
+}
