@@ -1,8 +1,8 @@
 import { DatetimePickerTheme } from 'types'
 
 const theme: DatetimePickerTheme = {
-  base: 'bg-white w-full border-2 border-gray-300 shadow-lg rounded-md border-b-2 ',
-  inner: 'flex flex-1',
+  base: 'bg-white w-full border-2 border-gray-300 shadow-lg rounded-md border-b-2 max-md:h-full',
+  inner: 'flex flex-1 max-md:flex-col max-md:h-full',
   monthSelector: {
     base: 'w-full flex flex-initial items-center justify-between py-4',
     selector: {
@@ -16,14 +16,15 @@ const theme: DatetimePickerTheme = {
     },
   },
   calendar: {
-    base: 'flex flex-1 max-md:flex-col',
+    base: 'flex flex-1 max-md:h-full',
     inner: {
-      base: 'flex flex-1 w-full flex-col',
+      base: 'flex flex-1 w-full flex-col h-full',
       week: {
         base: 'grid grid-cols-7 gap-y-1 gap-x-1 w-full tracking-wide pb-1 text-sm p-4',
         item: 'flex items-center justify-center w-full text-gray-400',
       },
-      calendar: 'grid grid-cols-7 gap-y-1 gap-x-1 w-full pt-2 p-4',
+      calendar:
+        'grid grid-cols-7 gap-y-1 gap-x-1 w-full pt-2 p-4 max-md:h-full',
       previous: {
         button: 'flex items-center justify-center h-10 w-full text-gray-400',
       },
@@ -32,6 +33,14 @@ const theme: DatetimePickerTheme = {
       },
       next: {
         button: 'flex items-center justify-center h-10 w-full text-gray-400',
+      },
+      monthSelector: {
+        base: 'w-full h-full grid grid-cols-2 gap-y-1 tracking-wide pb-4 px-4',
+        item: 'flex flex-1 items-center justify-center hover:bg-gray-200 rounded-md transition-hover duration-200',
+      },
+      yearSelector: {
+        base: 'w-full h-full grid grid-cols-2 gap-y-1 tracking-wide pb-4 px-14"',
+        item: 'flex flex-1 items-center justify-center hover:bg-gray-200 rounded-md transition-hover duration-200',
       },
     },
   },

@@ -1,3 +1,16 @@
+import { Dayjs } from 'dayjs'
+
+export interface Range {
+  start: Dayjs
+  end: Dayjs
+}
+
+export type Time = {
+  hour: string
+  minute: string
+  second: string
+}
+
 export interface DatetimePickerTheme {
   base: string
   inner: string
@@ -28,6 +41,14 @@ export interface DatetimePickerTheme {
       }
       next: {
         button: string
+      }
+      monthSelector: {
+        base: string
+        item: string
+      }
+      yearSelector: {
+        base: string
+        item: string
       }
     }
   }

@@ -10,7 +10,7 @@ export default function Index() {
 
   return (
     <div className="w-screen h-screen flex items-center justify-center">
-      <div className="w-1/2">
+      <div className="w-1/2 max-md:w-full max-md:h-full">
         <DatetimePicker
           value={value}
           onChange={onChange}

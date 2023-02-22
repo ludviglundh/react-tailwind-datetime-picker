@@ -13,6 +13,7 @@ import {
   getPreviousMonth,
 } from 'utils/dateUtils'
 import { Calendar } from './Calendar'
+import { Timepicker } from './Timepicker'
 
 export type CalendarData = {
   date: Dayjs
@@ -141,15 +142,19 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
 
   const handleDayClick = useCallback(
     (day: number, range: 'first' | 'second') => {
+      const selectedDate = dayjs()
+        .month(leftDate.month())
+        .year(leftDate.year())
+        .day(day)
+
       if (range === 'first') {
         // do this
-        console.log('day', day)
       } else {
         // do that
         console.log('day', day)
       }
     },
-    []
+    [leftDate]
   )
 
   const handleMonthClick = useCallback((range: 'first' | 'second') => {
@@ -223,6 +228,27 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
     [rightDate, leftDate]
   )
 
+  const handleLeftTimeChange = useCallback(
+    (time: string, range: 'first' | 'second') => {
+      const [hours, minutes, seconds] = time.split(':')
+
+      if (range === 'first') {
+        const nextDate = leftDate
+          .hour(Number(hours))
+          .minute(Number(minutes))
+          .second(Number(seconds))
+        setLeftDate(nextDate)
+      } else {
+        const nextDate = rightDate
+          .hour(Number(hours))
+          .minute(Number(minutes))
+          .second(Number(seconds))
+        setRightDate(nextDate)
+      }
+    },
+    [leftDate, rightDate]
+  )
+
   if (!hydrated) return null // todo: remove
 
   return (
@@ -240,7 +266,9 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
             onNextClick={() => handleNextClick('first')}
             monthSelectorOpen={leftMonthSelectorOpen}
             yearSelectorOpen={leftYearSelectorOpen}
+            onTimeChange={(time: string) => handleLeftTimeChange(time, 'first')}
           />
+
           {useRange && (
             <Calendar
               data={data[1]}
@@ -253,6 +281,9 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
               onNextClick={() => handleNextClick('second')}
               monthSelectorOpen={rightMonthSelectorOpen}
               yearSelectorOpen={rightYearSelectorOpen}
+              onTimeChange={(time: string) =>
+                handleLeftTimeChange(time, 'second')
+              }
             />
           )}
         </div>

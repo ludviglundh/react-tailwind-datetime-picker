@@ -10,6 +10,7 @@ import {
 } from 'utils/dateUtils'
 import { CalendarData } from './DatetimePicker'
 import { Selector } from './Selector'
+import { Timepicker } from './Timepicker'
 
 interface CalendarProps {
   onDayClick: (day: number) => void
@@ -19,6 +20,7 @@ interface CalendarProps {
   onYearClick: () => void
   onSelectMonth: (month: number) => void
   onSelectYear: (year: number) => void
+  onTimeChange: (time: string) => void
   data: CalendarData
   monthSelectorOpen: boolean
   yearSelectorOpen: boolean
@@ -32,6 +34,7 @@ export const Calendar: FC<CalendarProps> = ({
   onPreviousClick,
   onSelectMonth,
   onSelectYear,
+  onTimeChange,
   monthSelectorOpen,
   yearSelectorOpen,
   data,
@@ -115,10 +118,10 @@ export const Calendar: FC<CalendarProps> = ({
         )}
 
         {monthSelectorOpen && !yearSelectorOpen && (
-          <div className="w-full h-full grid grid-cols-2 gap-y-1 tracking-wide pb-4 px-4">
+          <div className={classNames(theme.inner.monthSelector.base)}>
             {getFormattedMonths(data.date, i18n).map((month, index: number) => (
               <button
-                className="flex flex-1 items-center justify-center hover:bg-gray-200 rounded-md transition-hover duration-200"
+                className={classNames(theme.inner.monthSelector.item)}
                 key={month}
                 onClick={() => onSelectMonth(index)}
               >
@@ -129,13 +132,13 @@ export const Calendar: FC<CalendarProps> = ({
         )}
 
         {!monthSelectorOpen && yearSelectorOpen && (
-          <div className="w-full h-full grid grid-cols-2 gap-y-1 tracking-wide pb-4 px-14">
+          <div className={classNames(theme.inner.yearSelector.base)}>
             {generateArrayOfYears(year, year + 13).map((year: string) => {
               return (
                 <button
                   onClick={() => onSelectYear(Number(year))}
                   key={year}
-                  className="flex flex-1 items-center justify-center hover:bg-gray-200 rounded-md transition-hover duration-200"
+                  className={classNames(theme.inner.yearSelector.item)}
                 >
                   {year}
                 </button>
@@ -143,6 +146,9 @@ export const Calendar: FC<CalendarProps> = ({
             })}
           </div>
         )}
+        <div className="px-4 py-2">
+          <Timepicker onChange={onTimeChange} />
+        </div>
       </div>
     </div>
   )

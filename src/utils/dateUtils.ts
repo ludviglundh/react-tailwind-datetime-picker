@@ -73,3 +73,27 @@ export const getNextMonth = (date: Dayjs) => {
 export const getPreviousMonth = (date: Dayjs) => {
   return date.month(date.month() - 1)
 }
+
+export const generateHoursMinutesAndSeconds = (): {
+  hours: string[]
+  minutes: string[]
+  seconds: string[]
+} => {
+  const hours = Array.from(Array(25).keys())
+    .slice(1, 25)
+    .map((hour) => (hour.toString().length < 2 ? `0${hour}` : hour.toString()))
+
+  const minutes = Array.from(Array(61).keys())
+    .slice(0, 61)
+    .map((minute) =>
+      minute.toString().length < 2 ? `0${minute}` : minute.toString()
+    )
+
+  const seconds = Array.from(Array(61).keys())
+    .slice(0, 61)
+    .map((seconds) =>
+      seconds.toString().length < 2 ? `0${seconds}` : seconds.toString()
+    )
+
+  return { hours, minutes, seconds }
+}
