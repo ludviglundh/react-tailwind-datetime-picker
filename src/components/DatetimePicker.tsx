@@ -1,4 +1,4 @@
-import { FC, useCallback, useState } from 'react'
+import { FC, useCallback, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { useMemo } from 'react'
 import { DatetimePickerContext } from 'contexts/DatetimePickerContext'
@@ -23,9 +23,11 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
     i18n = '',
     useDouble = true,
     useTimepicker = true,
+    useSingleValue = false,
     startFrom = null,
     maxDate = null,
     minDate = null,
+    disabledDates = null,
   } = {},
 }) => {
   const theme = useThemeContext().theme
@@ -41,14 +43,25 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
   const [range, setRange] = useState<DateRange>({ start: null, end: null })
   const [hoveredDate, setHoveredDate] = useState<Dayjs | null>(null)
 
+  useEffect(() => {
+    onChange(range)
+  }, [onChange, range])
+
   const context = useMemo(
     () => ({
       i18n,
       useDouble,
       useTimepicker,
+      useSingleValue,
       startFrom,
-      maxDate,
-      minDate,
+      maxDate: maxDate && dayjs(maxDate).isValid() ? dayjs(maxDate) : null,
+      minDate: minDate && dayjs(minDate).isValid() ? dayjs(minDate) : null,
+      disabledDates:
+        disabledDates &&
+        disabledDates.map((disabledDate) => {
+          if (dayjs(disabledDate).isValid()) return dayjs(disabledDate)
+          return null
+        }),
       onChange,
       inputValue: value,
       disabled,
@@ -57,13 +70,13 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
       leftSelectorOpen,
       rightSelectorOpen,
       range,
-      // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
       updateRange: (range: DateRange) => setRange(range),
       hoveredDate,
       updateHoveredDate: (date: Dayjs | null) => setHoveredDate(date),
     }),
     [
       disabled,
+      disabledDates,
       hoveredDate,
       i18n,
       leftDate,
@@ -76,6 +89,7 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
       rightSelectorOpen,
       startFrom,
       useDouble,
+      useSingleValue,
       useTimepicker,
       value,
     ]

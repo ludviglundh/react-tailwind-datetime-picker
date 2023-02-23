@@ -45,12 +45,20 @@ const theme: DatetimePickerTheme = {
 
       previous: {
         base: 'flex items-center justify-center h-10 w-10 w-full text-gray-400',
+        disabled: {
+          true: 'line-through cursor-not-allowed',
+          false: '',
+        },
       },
       current: {
-        base: 'flex items-center justify-center h-10  w-full',
+        base: 'flex items-center justify-center h-10 w-full',
+        disabled: {
+          true: 'line-through text-gray-400 cursor-not-allowed',
+          false: '',
+        },
         current: {
           true: 'text-blue-600',
-          false: 'text-gray-800',
+          false: '',
         },
         start: {
           selected: {
@@ -79,6 +87,10 @@ const theme: DatetimePickerTheme = {
       },
       next: {
         base: 'flex items-center justify-center h-10 w-10 w-full text-gray-400',
+        disabled: {
+          true: 'line-through cursor-not-allowed',
+          false: '',
+        },
       },
       selector: {
         base: 'flex flex-1 items-center justify-between gap-8 px-4 py-2',

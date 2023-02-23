@@ -24,6 +24,7 @@ export type CalendarData = {
     next: number[]
   }
 }
+export type DisabledDate = Dayjs | null
 
 // Theme
 export interface DatetimePickerTheme {
@@ -61,9 +62,11 @@ export interface DatetimePickerTheme {
       }
       previous: {
         base: string
+        disabled: ThemeBool
       }
       current: {
         base: string
+        disabled: ThemeBool
         current: ThemeBool
         start: {
           selected: ThemeBool
@@ -77,6 +80,7 @@ export interface DatetimePickerTheme {
       }
       next: {
         base: string
+        disabled: ThemeBool
       }
       selector: {
         base: string
@@ -92,19 +96,21 @@ export interface DatetimePickerTheme {
 }
 
 export interface DatetimePickerConfig {
-  maxDate?: Date | null
-  minDate?: Date | null
+  maxDate?: Date | Dayjs | null
+  minDate?: Date | Dayjs | null
+  disabledDates?: Date[] | Dayjs[] | null
   useDouble?: boolean
   useTimepicker?: boolean
-  startFrom?: Date | null
+  useSingleValue?: boolean
+  startFrom?: Date | Dayjs | null
   i18n?: string
 }
 
 // Components
 
 export interface DatetimePickerProps {
-  onChange: (value: string) => void
-  value: string
+  onChange: (range: DateRange) => void
+  value: DateRange
   disabled?: boolean
   config?: DatetimePickerConfig
   maxDate?: Date | null
