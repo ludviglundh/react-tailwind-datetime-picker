@@ -1,5 +1,6 @@
 import dayjs, { Dayjs } from 'dayjs'
 import { createContext, useContext } from 'react'
+import { DateRange } from 'types'
 
 interface DatetimePickerContext {
   inputValue: string
@@ -10,10 +11,12 @@ interface DatetimePickerContext {
   useRange: boolean
   leftDate: Dayjs
   rightDate: Dayjs
-  rightMonthSelectorOpen: boolean
-  leftMonthSelectorOpen: boolean
-  rightYearSelectorOpen: boolean
-  leftYearSelectorOpen: boolean
+  leftSelectorOpen: boolean
+  rightSelectorOpen: boolean
+  range: DateRange
+  updateRange: (range: DateRange) => void
+  hoveredDate: Dayjs | null
+  updateHoveredDate: (date: Dayjs) => void
 }
 
 export const DatetimePickerContext = createContext<DatetimePickerContext>({
@@ -25,13 +28,22 @@ export const DatetimePickerContext = createContext<DatetimePickerContext>({
   useRange: false,
   leftDate: dayjs(),
   rightDate: dayjs(),
-  rightMonthSelectorOpen: false,
-  leftMonthSelectorOpen: false,
-  rightYearSelectorOpen: false,
-  leftYearSelectorOpen: false,
+  leftSelectorOpen: false,
+  rightSelectorOpen: false,
+  range: {
+    start: null,
+    end: null,
+  },
+  // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
+  updateRange: (range: DateRange) => {},
+  hoveredDate: null,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
+  updateHoveredDate: (date: Dayjs) => {},
 })
 
 export const useDatetimePickerContext = (): DatetimePickerContext => {
   const context = useContext(DatetimePickerContext)
   return context
 }
+
+DatetimePickerContext.displayName = 'DatetimePickerContext'

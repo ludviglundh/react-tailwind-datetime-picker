@@ -14,3 +14,5 @@ export const useThemeContext = (): ThemeContextProps => {
   const context = useContext(ThemeContext)
   return context
 }
+
+ThemeContext.displayName = 'DatetimePickerThemeContext'

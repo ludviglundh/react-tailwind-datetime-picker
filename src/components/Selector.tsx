@@ -1,4 +1,4 @@
-import type { FC } from 'react'
+import { FC } from 'react'
 import classNames from 'classnames'
 import { useDatetimePickerContext } from 'contexts/DatetimePickerContext'
 import { useThemeContext } from 'contexts/ThemeContext'
@@ -8,68 +8,53 @@ import {
   DoubleChevronLeftIcon,
   DoubleChevronRightIcon,
 } from 'icons'
-import { getFormattedMonth, getFormattedYear } from 'utils/dateUtils'
+import { getFormattedMonthAndYear } from 'utils/dateUtils'
 import { loadI18n } from 'utils/i18nUtils'
 import { CalendarData } from './DatetimePicker'
 
 interface SelectorProps {
   onNextClick: () => void
   onPreviousClick: () => void
-  onMonthClick: () => void
-  onYearClick: () => void
-  monthSelectorOpen: boolean
-  yearSelectorOpen: boolean
+  onSelectorClick: () => void
+  selectorOpen: boolean
   date: CalendarData['date']
 }
 
 export const Selector: FC<SelectorProps> = ({
   onNextClick,
   onPreviousClick,
-  onMonthClick,
-  onYearClick,
-  monthSelectorOpen,
-  yearSelectorOpen,
+  selectorOpen,
+  onSelectorClick,
   date,
 }) => {
-  const theme = useThemeContext().theme.monthSelector
   const { i18n } = useDatetimePickerContext()
+
   loadI18n(i18n)
+  const theme = useThemeContext().theme.monthSelector
 
   return (
     <div className={classNames(theme.base)} id="month-selector">
       <div className={classNames(theme.selector.base)}>
-        {!monthSelectorOpen && (
-          <button
-            onClick={onPreviousClick}
-            className={classNames(theme.selector.previous)}
-          >
-            {yearSelectorOpen ? <DoubleChevronLeftIcon /> : <ChevronLeftIcon />}
-          </button>
-        )}
         <button
-          onClick={onMonthClick}
           className={classNames(theme.selector.month)}
+          onClick={onSelectorClick}
         >
-          <span>{getFormattedMonth(date, i18n)}</span>
+          <span>{getFormattedMonthAndYear(date, i18n)}</span>
         </button>
-        <button
-          onClick={onYearClick}
-          className={classNames(theme.selector.year)}
-        >
-          <span>{getFormattedYear(date, i18n)}</span>
-        </button>
-        {!monthSelectorOpen && (
+        <div className="flex flex-1 items-center gap-2 justify-end">
           <button
-            onClick={onNextClick}
-            className={classNames(theme.selector.next)}
+            className={classNames(theme.selector.previous)}
+            onClick={onPreviousClick}
           >
-            {yearSelectorOpen ? (
-              <DoubleChevronRightIcon />
-            ) : (
-              <ChevronRightIcon />
-            )}
+            {selectorOpen ? <DoubleChevronLeftIcon /> : <ChevronLeftIcon />}
           </button>
-        )}
+          <button
+            className={classNames(theme.selector.next)}
+            onClick={onNextClick}
+          >
+            {selectorOpen ? <DoubleChevronRightIcon /> : <ChevronRightIcon />}
+          </button>
+        </div>
       </div>
     </div>
   )

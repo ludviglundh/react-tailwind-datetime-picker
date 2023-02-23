@@ -45,6 +45,10 @@ export const getFormattedMonth = (date: Dayjs, i18n: string) => {
   return dayjs(date).locale(i18n).format('MMMM').toUpperCase()
 }
 
+export const getFormattedMonthAndYear = (date: Dayjs, i18n: string) => {
+  return dayjs(date).locale(i18n).format('MMMM YYYY').toUpperCase()
+}
+
 export const getFormattedYear = (date: Dayjs, i18n: string) => {
   return dayjs(date).locale(i18n).format('YYYY').toUpperCase()
 }

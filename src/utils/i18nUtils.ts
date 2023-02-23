@@ -1,4 +1,4 @@
-export const loadI18n = (language = 'en'): void => {
+export function loadI18n(language = 'en') {
   switch (language) {
     case 'sv':
       import('dayjs/locale/sv')
