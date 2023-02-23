@@ -32,7 +32,7 @@ const theme: DatetimePickerTheme = {
     inner: {
       base: 'flex flex-1 w-full flex-col',
       week: {
-        base: 'grid grid-cols-7 gap-y-1 gap-x-1 w-full tracking-wide pb-1 text-sm p-4',
+        base: 'grid grid-cols-7 gap-y-1  w-full tracking-wide pb-1 text-sm p-4',
         item: 'flex items-center justify-center w-full',
         current: {
           true: 'text-blue-600',
@@ -40,14 +40,14 @@ const theme: DatetimePickerTheme = {
         },
       },
       calendar: {
-        base: 'grid grid-cols-7 gap-y-1 gap-x-1 w-full pt-2 p-4 max-md:h-full',
+        base: 'grid grid-cols-7 gap-y-1 w-full pt-2 p-4 max-md:h-full',
       },
 
       previous: {
         base: 'flex items-center justify-center h-10 w-10 w-full text-gray-400',
       },
       current: {
-        base: 'flex items-center justify-center h-10 w-10 w-full',
+        base: 'flex items-center justify-center h-10  w-full',
         current: {
           true: 'text-blue-600',
           false: 'text-gray-800',
