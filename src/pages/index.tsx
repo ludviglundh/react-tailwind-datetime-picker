@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import DatetimePicker from 'components/DatetimePicker'
 import dayjs from 'dayjs'
 import { useEffect, useState } from 'react'
@@ -20,7 +21,7 @@ export default function Index() {
   if (!hydrated) return null
 
   return (
-    <body className={theme}>
+    <body className={classNames(theme, 'h-screen max-md:h-full')}>
       <div className="w-screen h-full flex items-center justify-center h-full dark:bg-slate-900 ">
         <div className="w-1/2 max-md:w-full max-md:h-full container">
           <div className="flex flex-col flex-1 gap-4 h-full justify-center p-8">
