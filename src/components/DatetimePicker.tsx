@@ -19,12 +19,13 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
   onChange,
   value,
   disabled = false,
-
-  useRange = false,
-  placeholder = '',
-  i18n = '',
-  startFrom = null,
-  startWeekOn = 'sun',
+  config: {
+    i18n = '',
+    useDouble = true,
+    startFrom = null,
+    maxDate = null,
+    minDate = null,
+  } = {},
 }) => {
   const theme = useThemeContext().theme
 
@@ -48,21 +49,19 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
 
   const context = useMemo(
     () => ({
+      i18n,
+      useDouble,
+      startFrom,
+      maxDate,
+      minDate,
       onChange,
       inputValue: value,
       disabled,
-
-      useRange,
-      placeholder,
-      i18n,
-      startFrom,
-      startWeekOn,
       leftDate,
       rightDate,
       leftSelectorOpen,
       rightSelectorOpen,
       range,
-
       // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
       updateRange: (range: DateRange) => setRange(range),
       hoveredDate,
@@ -74,14 +73,14 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
       i18n,
       leftDate,
       leftSelectorOpen,
+      maxDate,
+      minDate,
       onChange,
-      placeholder,
       range,
       rightDate,
       rightSelectorOpen,
       startFrom,
-      startWeekOn,
-      useRange,
+      useDouble,
       value,
     ]
   )
@@ -201,9 +200,11 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
   return (
     <DatetimePickerContext.Provider value={context}>
       <div
+        id="base"
         className={classNames(
           theme.base,
-          theme.disabled[disabled ? 'true' : 'false']
+          theme.disabled[disabled ? 'true' : 'false'],
+          theme.useDouble[useDouble ? 'true' : 'false']
         )}
       >
         {disabled && <div className={theme.inner.disabled} />}
@@ -219,7 +220,7 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
             onTimeChange={(time: string) => handleLeftTimeChange(time, 'first')}
           />
 
-          {useRange && (
+          {useDouble && (
             <Calendar
               data={data[1]}
               onSelectMonth={(month) => handleSelectMonth(month, 'second')}

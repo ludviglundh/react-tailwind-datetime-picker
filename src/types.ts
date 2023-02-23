@@ -29,6 +29,10 @@ export type CalendarData = {
 export interface DatetimePickerTheme {
   base: string
   disabled: ThemeBool
+  useDouble: {
+    true: string
+    false: string
+  }
   inner: {
     base: string
     disabled: string
@@ -87,12 +91,25 @@ export interface DatetimePickerTheme {
   }
 }
 
-interface DatetimePickerConfig {
+export interface DatetimePickerConfig {
+  maxDate?: Date | null
+  minDate?: Date | null
+  useDouble?: boolean
+  startFrom?: Date | null
+  i18n?: string
+}
+
+// Components
+
+export interface DatetimePickerProps {
+  onChange: (value: string) => void
+  value: string
+  disabled?: boolean
+  config?: DatetimePickerConfig
   maxDate?: Date | null
   minDate?: Date | null
 }
 
-// Components
 export type ArrowProps = ComponentProps<'div'>
 
 export interface IconProps {
@@ -106,17 +123,7 @@ export interface SelectorProps {
   selectorOpen: boolean
   date: CalendarData['date']
 }
-export interface DatetimePickerProps {
-  onChange: (value: string) => void
-  value: string
-  disabled?: boolean
-  useRange?: boolean
-  placeholder?: string
-  i18n?: string
-  startFrom?: Date | null
-  startWeekOn?: string
-  config?: DatetimePickerConfig
-}
+
 export interface CalendarProps {
   onNextClick: () => void
   onPreviousClick: () => void

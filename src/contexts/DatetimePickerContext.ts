@@ -3,11 +3,12 @@ import { createContext, useContext } from 'react'
 import { DateRange } from 'types'
 
 interface DatetimePickerContext {
+  maxDate?: Date | null
+  minDate?: Date | null
   inputValue: string
-  placeholder: string
   i18n: string
   disabled: boolean
-  useRange: boolean
+  useDouble: boolean
   leftDate: Dayjs
   rightDate: Dayjs
   leftSelectorOpen: boolean
@@ -19,11 +20,12 @@ interface DatetimePickerContext {
 }
 
 export const DatetimePickerContext = createContext<DatetimePickerContext>({
+  maxDate: null,
+  minDate: null,
   inputValue: '',
-  placeholder: '',
   i18n: '',
   disabled: false,
-  useRange: false,
+  useDouble: false,
   leftDate: dayjs(),
   rightDate: dayjs(),
   leftSelectorOpen: false,

@@ -1,13 +1,17 @@
 import { DatetimePickerTheme } from 'types'
 
 const theme: DatetimePickerTheme = {
-  base: 'w-full h-full border-2 border-gray-300 shadow-lg rounded-md border-b-2 max-md:h-full relative',
+  base: 'h-fit border-2 border-gray-300 shadow-lg rounded-md border-b-2 relative',
   disabled: {
     true: 'border-gray-100 cursor-not-allowed',
     false: 'bg-white',
   },
+  useDouble: {
+    true: 'w-full ',
+    false: 'w-fit max-md:h-fit',
+  },
   inner: {
-    base: 'flex flex-1 max-md:flex-col max-md:h-full',
+    base: 'flex flex-1 max-md:flex-col h-full',
     disabled:
       'absolute w-full h-full z-50 bg-gray-50 opacity-70 cursor-not-allowed',
   },
@@ -26,7 +30,7 @@ const theme: DatetimePickerTheme = {
   calendar: {
     base: 'flex flex-1 max-md:h-full',
     inner: {
-      base: 'flex flex-1 w-full flex-col h-full',
+      base: 'flex flex-1 w-full flex-col',
       week: {
         base: 'grid grid-cols-7 gap-y-1 gap-x-1 w-full tracking-wide pb-1 text-sm p-4',
         item: 'flex items-center justify-center w-full',
@@ -40,10 +44,10 @@ const theme: DatetimePickerTheme = {
       },
 
       previous: {
-        base: 'flex items-center justify-center h-10 w-full text-gray-400',
+        base: 'flex items-center justify-center h-10 w-10 w-full text-gray-400',
       },
       current: {
-        base: 'flex items-center justify-center h-10 w-full',
+        base: 'flex items-center justify-center h-10 w-10 w-full',
         current: {
           true: 'text-blue-600',
           false: 'text-gray-800',
@@ -74,7 +78,7 @@ const theme: DatetimePickerTheme = {
         },
       },
       next: {
-        base: 'flex items-center justify-center h-10 w-full text-gray-400',
+        base: 'flex items-center justify-center h-10 w-10 w-full text-gray-400',
       },
       selector: {
         base: 'flex flex-1 items-center justify-between gap-8 px-4 py-2',
