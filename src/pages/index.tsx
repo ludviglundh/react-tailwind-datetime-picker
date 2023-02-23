@@ -16,6 +16,7 @@ export default function Index() {
           onChange={onChange}
           i18n="sv"
           useRange={true}
+          disabled
         />
       </div>
     </div>

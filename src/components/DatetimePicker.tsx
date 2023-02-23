@@ -222,8 +222,14 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
 
   return (
     <DatetimePickerContext.Provider value={context}>
-      <div className={classNames(theme.base)}>
-        <div className={classNames(theme.inner)}>
+      <div
+        className={classNames(
+          theme.base,
+          theme.disabled[disabled ? 'true' : 'false']
+        )}
+      >
+        {disabled && <div className={theme.inner.disabled} />}
+        <div className={classNames(theme.inner.base)}>
           <Calendar
             data={data[0]}
             onSelectMonth={(month) => handleSelectMonth(month, 'first')}

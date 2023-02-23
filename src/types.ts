@@ -18,7 +18,11 @@ export type Time = {
 
 export interface DatetimePickerTheme {
   base: string
-  inner: string
+  disabled: ThemeBool
+  inner: {
+    base: string
+    disabled: string
+  }
   monthSelector: {
     base: string
     selector: {

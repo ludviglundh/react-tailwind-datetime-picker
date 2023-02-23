@@ -1,8 +1,16 @@
 import { DatetimePickerTheme } from 'types'
 
 const theme: DatetimePickerTheme = {
-  base: 'bg-white w-full border-2 border-gray-300 shadow-lg rounded-md border-b-2 max-md:h-full',
-  inner: 'flex flex-1 max-md:flex-col max-md:h-full',
+  base: 'w-full h-full border-2 border-gray-300 shadow-lg rounded-md border-b-2 max-md:h-full relative',
+  disabled: {
+    true: 'border-gray-100 cursor-not-allowed',
+    false: 'bg-white',
+  },
+  inner: {
+    base: 'flex flex-1 max-md:flex-col max-md:h-full',
+    disabled:
+      'absolute w-full h-full z-50 bg-gray-50 opacity-70 cursor-not-allowed',
+  },
   monthSelector: {
     base: 'w-full flex flex-initial items-center justify-between py-4',
     selector: {
