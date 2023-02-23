@@ -28,7 +28,7 @@ export interface DatetimePickerProps {
   onChange: (value: string) => void
   value: string
   disabled?: boolean
-  readOnly?: boolean
+
   useRange?: boolean
   placeholder?: string
   i18n?: string
@@ -40,7 +40,7 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
   onChange,
   value,
   disabled = false,
-  readOnly = false,
+
   useRange = false,
   placeholder = '',
   i18n = '',
@@ -72,7 +72,7 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
       onChange,
       inputValue: value,
       disabled,
-      readOnly,
+
       useRange,
       placeholder,
       i18n,
@@ -98,7 +98,6 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
       onChange,
       placeholder,
       range,
-      readOnly,
       rightDate,
       rightSelectorOpen,
       startFrom,
