@@ -1,5 +1,5 @@
 import DatetimePicker from 'components/DatetimePicker'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Index() {
   const [value, setValue] = useState('')
@@ -7,6 +7,14 @@ export default function Index() {
   const onChange = (nextValue: string) => {
     setValue(nextValue)
   }
+
+  const [hydrated, setHydrated] = useState(false)
+
+  useEffect(() => {
+    setHydrated(true)
+  }, [])
+
+  if (!hydrated) return null
 
   return (
     <div className="w-screen h-screen flex items-center justify-center h-full">

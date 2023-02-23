@@ -95,6 +95,7 @@ export interface DatetimePickerConfig {
   maxDate?: Date | null
   minDate?: Date | null
   useDouble?: boolean
+  useTimepicker?: boolean
   startFrom?: Date | null
   i18n?: string
 }

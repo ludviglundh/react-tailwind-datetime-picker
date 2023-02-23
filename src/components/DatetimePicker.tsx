@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect, useState } from 'react'
+import { FC, useCallback, useState } from 'react'
 import classNames from 'classnames'
 import { useMemo } from 'react'
 import { DatetimePickerContext } from 'contexts/DatetimePickerContext'
@@ -22,6 +22,7 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
   config: {
     i18n = '',
     useDouble = true,
+    useTimepicker = true,
     startFrom = null,
     maxDate = null,
     minDate = null,
@@ -40,17 +41,11 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
   const [range, setRange] = useState<DateRange>({ start: null, end: null })
   const [hoveredDate, setHoveredDate] = useState<Dayjs | null>(null)
 
-  const [hydrated, setHydrated] = useState(false) // todo: remove
-
-  useEffect(() => {
-    // todo: remove
-    setHydrated(true)
-  }, [])
-
   const context = useMemo(
     () => ({
       i18n,
       useDouble,
+      useTimepicker,
       startFrom,
       maxDate,
       minDate,
@@ -81,6 +76,7 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
       rightSelectorOpen,
       startFrom,
       useDouble,
+      useTimepicker,
       value,
     ]
   )
@@ -194,8 +190,6 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
     },
     [leftDate, rightDate]
   )
-
-  if (!hydrated) return null // todo: remove
 
   return (
     <DatetimePickerContext.Provider value={context}>

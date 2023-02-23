@@ -9,6 +9,7 @@ interface DatetimePickerContext {
   i18n: string
   disabled: boolean
   useDouble: boolean
+  useTimepicker: boolean
   leftDate: Dayjs
   rightDate: Dayjs
   leftSelectorOpen: boolean
@@ -26,6 +27,7 @@ export const DatetimePickerContext = createContext<DatetimePickerContext>({
   i18n: '',
   disabled: false,
   useDouble: false,
+  useTimepicker: false,
   leftDate: dayjs(),
   rightDate: dayjs(),
   leftSelectorOpen: false,
