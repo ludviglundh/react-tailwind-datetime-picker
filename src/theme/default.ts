@@ -1,7 +1,7 @@
 import { DatetimePickerTheme } from 'types'
 
 const theme: DatetimePickerTheme = {
-  base: 'h-fit border-2 border-gray-300 shadow-lg rounded-md border-b-2 relative',
+  base: 'bg-white h-fit border-2 border-gray-300 shadow-lg rounded-md border-b-2 relative dark:bg-slate-800 dark:border-slate-700',
   disabled: {
     true: 'border-gray-100 cursor-not-allowed',
     false: 'bg-white',
@@ -16,19 +16,19 @@ const theme: DatetimePickerTheme = {
       'absolute w-full h-full z-50 bg-gray-50 opacity-70 cursor-not-allowed',
   },
   monthSelector: {
-    base: 'w-full flex flex-initial items-center justify-between py-4',
+    base: 'w-full flex flex-initial items-center justify-between py-4 dark:text-white/70',
     selector: {
-      base: 'w-full flex flex-1 items-center justify-between px-4',
+      base: 'w-full flex flex-1 items-center justify-between px-4 dark:text-white/70',
       previous:
         'flex items-center justify-center p-1.5 rounded-full hover:bg-gray-200 transition-hover duration-200 mr-2',
       month:
-        'flex items-center  w-fit justify-start px-2 py-1.5 hover:bg-gray-200 rounded-md transition-hover duration-200',
+        'flex items-center w-fit justify-start px-2 py-1.5 hover:bg-gray-200 rounded-md transition-hover duration-200',
       year: 'flex items-center flex-1 justify-center px-2 py-1.5 hover:bg-gray-200 rounded-md transition-hover duration-200',
       next: 'flex items-center justify-center p-1.5 rounded-full hover:bg-gray-200 transition-hover duration-200 ml-2',
     },
   },
   calendar: {
-    base: 'flex flex-1 max-md:h-full',
+    base: 'flex flex-1 max-md:h-full dark:text-white/70',
     inner: {
       base: 'flex flex-1 w-full flex-col',
       week: {
@@ -36,7 +36,7 @@ const theme: DatetimePickerTheme = {
         item: 'flex items-center justify-center w-full',
         current: {
           true: 'text-blue-600',
-          false: 'text-gray-600',
+          false: 'text-gray-600 dark:text-slate-500',
         },
       },
       calendar: {
@@ -44,7 +44,7 @@ const theme: DatetimePickerTheme = {
       },
 
       previous: {
-        base: 'flex items-center justify-center h-10 w-10 w-full text-gray-400',
+        base: 'flex items-center justify-center h-10 w-10 w-full text-gray-400 dark:text-slate-500/80',
         disabled: {
           true: 'line-through cursor-not-allowed',
           false: '',
@@ -54,7 +54,7 @@ const theme: DatetimePickerTheme = {
         base: 'flex items-center justify-center h-10 w-full',
         disabled: {
           true: 'line-through text-gray-400 cursor-not-allowed',
-          false: '',
+          false: 'dark:text-white/80',
         },
         current: {
           true: 'text-blue-600',
@@ -62,31 +62,31 @@ const theme: DatetimePickerTheme = {
         },
         start: {
           selected: {
-            true: 'bg-blue-200 rounded-l-lg',
+            true: 'bg-blue-400 rounded-l-lg dark:bg-blue-600/80',
             false: '',
           },
           hovered: {
-            true: 'bg-blue-200 rounded-l-lg',
+            true: 'bg-blue-400 rounded-l-lg dark:bg-blue-600/80',
             false: '',
           },
         },
         end: {
           selected: {
-            true: 'bg-blue-200 rounded-r-lg',
+            true: 'bg-blue-400 rounded-r-lg dark:bg-blue-600/80',
             false: '',
           },
           hovered: {
-            true: 'bg-blue-200 rounded-r-lg',
+            true: 'bg-blue-400 rounded-r-lg dark:bg-blue-600/80',
             false: '',
           },
         },
         hover: {
-          true: 'bg-gray-200',
+          true: 'bg-blue-200 dark:bg-blue-500/90',
           false: '',
         },
       },
       next: {
-        base: 'flex items-center justify-center h-10 w-10 w-full text-gray-400',
+        base: 'flex items-center justify-center h-10 w-10 w-full text-gray-400 dark:text-slate-500/80',
         disabled: {
           true: 'line-through cursor-not-allowed',
           false: '',
@@ -94,7 +94,7 @@ const theme: DatetimePickerTheme = {
       },
       selector: {
         base: 'flex flex-1 items-center justify-between gap-8 px-4 py-2',
-        separator: 'h-5/6 w-[3px] bg-gray-300 my-20 ',
+        separator: 'h-5/6 w-[3px] bg-gray-300 my-20 dark:bg-slate-500',
         current: {
           true: 'text-blue-600',
           false: '',
