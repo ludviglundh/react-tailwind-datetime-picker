@@ -10,15 +10,7 @@ import {
 } from 'icons'
 import { getFormattedMonthAndYear } from 'utils/dateUtils'
 import { loadI18n } from 'utils/i18nUtils'
-import { CalendarData } from './DatetimePicker'
-
-interface SelectorProps {
-  onNextClick: () => void
-  onPreviousClick: () => void
-  onSelectorClick: () => void
-  selectorOpen: boolean
-  date: CalendarData['date']
-}
+import { SelectorProps } from 'types'
 
 export const Selector: FC<SelectorProps> = ({
   onNextClick,

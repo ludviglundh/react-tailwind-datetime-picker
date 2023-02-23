@@ -1,21 +1,31 @@
-import { Dayjs } from 'dayjs'
+import type { Dayjs } from 'dayjs'
+import type { ComponentProps } from 'react'
 
+// Generics
+export type ThemeBoolReturnType = 'true' | 'false'
 export interface ThemeBool {
   true: string
   false: string
 }
-
 export interface DateRange {
   start: Dayjs | null
   end: Dayjs | null
 }
-
 export type Time = {
   hour: string
   minute: string
   second: string
 }
+export type CalendarData = {
+  date: Dayjs
+  days: {
+    previous: number[]
+    current: number[]
+    next: number[]
+  }
+}
 
+// Theme
 export interface DatetimePickerTheme {
   base: string
   disabled: ThemeBool
@@ -75,4 +85,50 @@ export interface DatetimePickerTheme {
       }
     }
   }
+}
+
+interface DatetimePickerConfig {
+  maxDate?: Date | null
+  minDate?: Date | null
+}
+
+// Components
+export type ArrowProps = ComponentProps<'div'>
+
+export interface IconProps {
+  className?: string
+}
+
+export interface SelectorProps {
+  onNextClick: () => void
+  onPreviousClick: () => void
+  onSelectorClick: () => void
+  selectorOpen: boolean
+  date: CalendarData['date']
+}
+export interface DatetimePickerProps {
+  onChange: (value: string) => void
+  value: string
+  disabled?: boolean
+  useRange?: boolean
+  placeholder?: string
+  i18n?: string
+  startFrom?: Date | null
+  startWeekOn?: string
+  config?: DatetimePickerConfig
+}
+export interface CalendarProps {
+  onNextClick: () => void
+  onPreviousClick: () => void
+  onSelectorClick: () => void
+  onSelectMonth: (month: number) => void
+  onSelectYear: (year: number) => void
+  onTimeChange: (time: string) => void
+  data: CalendarData
+  selectorOpen: boolean
+}
+
+// Contexts
+export interface ThemeContextProps {
+  theme: DatetimePickerTheme
 }

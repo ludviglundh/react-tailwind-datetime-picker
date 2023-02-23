@@ -11,24 +11,12 @@ import {
   getNextMonth,
   getPreviousMonth,
 } from 'utils/dateUtils'
-import { CalendarData } from './DatetimePicker'
+
 import { Selector } from './Selector'
 import { loadI18n } from 'utils/i18nUtils'
+import { CalendarProps, ThemeBoolReturnType } from 'types'
 
 dayjs.extend(isBetween)
-
-type ThemeBoolReturnType = 'true' | 'false'
-
-interface CalendarProps {
-  onNextClick: () => void
-  onPreviousClick: () => void
-  onSelectorClick: () => void
-  onSelectMonth: (month: number) => void
-  onSelectYear: (year: number) => void
-  onTimeChange: (time: string) => void
-  data: CalendarData
-  selectorOpen: boolean
-}
 
 export const Calendar: FC<CalendarProps> = ({
   onNextClick,

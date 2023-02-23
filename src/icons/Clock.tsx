@@ -1,5 +1,5 @@
-import { IconProps } from 'icons'
-import { FC } from 'react'
+import type { FC } from 'react'
+import type { IconProps } from 'types'
 
 export const ClockIcon: FC<IconProps> = ({ className = 'w-6 h-6' }) => {
   return (

@@ -13,28 +13,7 @@ import {
   getPreviousMonth,
 } from 'utils/dateUtils'
 import { Calendar } from './Calendar'
-import { DateRange } from 'types'
-
-export type CalendarData = {
-  date: Dayjs
-  days: {
-    previous: number[]
-    current: number[]
-    next: number[]
-  }
-}
-
-export interface DatetimePickerProps {
-  onChange: (value: string) => void
-  value: string
-  disabled?: boolean
-
-  useRange?: boolean
-  placeholder?: string
-  i18n?: string
-  startFrom?: Date | null
-  startWeekOn?: string
-}
+import { CalendarData, DateRange, DatetimePickerProps } from 'types'
 
 const DatetimePicker: FC<DatetimePickerProps> = ({
   onChange,

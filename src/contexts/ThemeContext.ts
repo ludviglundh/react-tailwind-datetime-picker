@@ -1,10 +1,6 @@
+import type { ThemeContextProps } from 'types'
 import { createContext, useContext } from 'react'
 import defaultTheme from 'theme/default'
-import { DatetimePickerTheme } from 'types'
-
-export interface ThemeContextProps {
-  theme: DatetimePickerTheme
-}
 
 export const ThemeContext = createContext<ThemeContextProps>({
   theme: defaultTheme,

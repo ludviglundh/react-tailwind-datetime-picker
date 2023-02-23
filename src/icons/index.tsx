@@ -6,10 +6,6 @@ import {
   DoubleChevronRightIcon,
 } from './Chevrons'
 
-export interface IconProps {
-  className?: string
-}
-
 export {
   CalendarIcon,
   ChevronLeftIcon,
