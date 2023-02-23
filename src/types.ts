@@ -36,43 +36,29 @@ export interface DatetimePickerTheme {
       week: {
         base: string
         item: string
-      }
-      calendar: string
-      previous: {
-        button: string
         current: ThemeBool
-        start: {
-          selected: ThemeBool
-        }
-        end: {
-          selected: ThemeBool
-        }
-        range: ThemeBool
-        hover: ThemeBool
+      }
+      calendar: {
+        base: string
+      }
+      previous: {
+        base: string
       }
       current: {
-        button: string
+        base: string
         current: ThemeBool
         start: {
           selected: ThemeBool
+          hovered: ThemeBool
         }
         end: {
           selected: ThemeBool
+          hovered: ThemeBool
         }
-        range: ThemeBool
         hover: ThemeBool
       }
       next: {
-        button: string
-        current: ThemeBool
-        start: {
-          selected: ThemeBool
-        }
-        end: {
-          selected: ThemeBool
-        }
-        range: ThemeBool
-        hover: ThemeBool
+        base: string
       }
       selector: {
         base: string

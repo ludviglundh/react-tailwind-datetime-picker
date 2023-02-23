@@ -27,9 +27,9 @@ export const getLastElementsInArray = (array = [], size = 0) => {
   return array.slice(Math.max(array.length - size, 0))
 }
 
-export const getFormattedWeekDays = () => {
+export const getFormattedWeekDays = (i18n: string) => {
   return Array.from(Array(7).keys()).map((num) => {
-    return dayjs().day(num).format('ddd')
+    return dayjs().locale(i18n).day(num).format('ddd')
   })
 }
 
@@ -47,10 +47,6 @@ export const getFormattedMonth = (date: Dayjs, i18n: string) => {
 
 export const getFormattedMonthAndYear = (date: Dayjs, i18n: string) => {
   return dayjs(date).locale(i18n).format('MMMM YYYY').toUpperCase()
-}
-
-export const getFormattedYear = (date: Dayjs, i18n: string) => {
-  return dayjs(date).locale(i18n).format('YYYY').toUpperCase()
 }
 
 export const getFormattedMonths = (

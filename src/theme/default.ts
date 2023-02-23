@@ -21,90 +21,52 @@ const theme: DatetimePickerTheme = {
       base: 'flex flex-1 w-full flex-col h-full',
       week: {
         base: 'grid grid-cols-7 gap-y-1 gap-x-1 w-full tracking-wide pb-1 text-sm p-4',
-        item: 'flex items-center justify-center w-full text-gray-400',
-      },
-      calendar:
-        'grid grid-cols-7 gap-y-1 gap-x-1 w-full pt-2 p-4 max-md:h-full',
-      previous: {
-        button: 'flex items-center justify-center h-10 w-full text-gray-400',
-        current: {
-          true: '',
-          false: '',
-        },
-        start: {
-          selected: {
-            true: 'bg-blue-200 rounded-tl-md rounded-bl-md',
-            false: '',
-          },
-        },
-        end: {
-          selected: {
-            true: 'bg-blue-200',
-            false: '',
-          },
-        },
-        hover: {
-          true: 'bg-gray-200',
-          false: '',
-        },
-        range: {
-          true: 'bg-gray-200',
-          false: '',
-        },
-      },
-      current: {
-        button: 'flex items-center justify-center h-10 w-full text-gray-800',
+        item: 'flex items-center justify-center w-full',
         current: {
           true: 'text-blue-600',
-          false: '',
+          false: 'text-gray-600',
+        },
+      },
+      calendar: {
+        base: 'grid grid-cols-7 gap-y-1 gap-x-1 w-full pt-2 p-4 max-md:h-full',
+      },
+
+      previous: {
+        base: 'flex items-center justify-center h-10 w-full text-gray-400',
+      },
+      current: {
+        base: 'flex items-center justify-center h-10 w-full',
+        current: {
+          true: 'text-blue-600',
+          false: 'text-gray-800',
         },
         start: {
           selected: {
-            true: 'bg-blue-200 rounded-l-ld rounded-l-lg',
+            true: 'bg-blue-200 rounded-l-lg',
+            false: '',
+          },
+          hovered: {
+            true: 'bg-blue-200 rounded-l-lg',
             false: '',
           },
         },
         end: {
           selected: {
-            true: 'bg-blue-200 rounded-r-lg rounded-r-lg',
+            true: 'bg-blue-200 rounded-r-lg',
+            false: '',
+          },
+          hovered: {
+            true: 'bg-blue-200 rounded-r-lg',
             false: '',
           },
         },
         hover: {
-          true: 'bg-gray-200',
-          false: '',
-        },
-        range: {
           true: 'bg-gray-200',
           false: '',
         },
       },
       next: {
-        button: 'flex items-center justify-center h-10 w-full text-gray-400',
-        current: {
-          true: '',
-          false: '',
-        },
-        start: {
-          selected: {
-            true: 'bg-blue-200',
-            false: '',
-          },
-        },
-        end: {
-          selected: {
-            true: 'bg-blue-200',
-            false: '',
-          },
-        },
-        hover: {
-          true: '',
-          false: '',
-        },
-        range: {
-          true: 'bg-gray-200',
-          false: '',
-        },
+        base: 'flex items-center justify-center h-10 w-full text-gray-400',
       },
       selector: {
         base: 'flex flex-1 items-center justify-between gap-8 px-4 py-2',

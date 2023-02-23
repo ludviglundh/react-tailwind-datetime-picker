@@ -53,8 +53,8 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
     dayjs(startFrom).isValid() ? dayjs(startFrom) : dayjs()
   )
   const [rightDate, setRightDate] = useState<Dayjs>(getNextMonth(leftDate))
-  const [leftSelectorOpen, setLeftSelectorOpen] = useState<boolean>(false)
 
+  const [leftSelectorOpen, setLeftSelectorOpen] = useState<boolean>(false)
   const [rightSelectorOpen, setRightSelectorOpen] = useState<boolean>(false)
 
   const [range, setRange] = useState<DateRange>({ start: null, end: null })
@@ -87,7 +87,7 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
       // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
       updateRange: (range: DateRange) => setRange(range),
       hoveredDate,
-      updateHoveredDate: (date: Dayjs) => setHoveredDate(date),
+      updateHoveredDate: (date: Dayjs | null) => setHoveredDate(date),
     }),
     [
       disabled,

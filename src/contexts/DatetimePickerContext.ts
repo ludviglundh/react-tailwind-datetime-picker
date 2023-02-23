@@ -16,7 +16,7 @@ interface DatetimePickerContext {
   range: DateRange
   updateRange: (range: DateRange) => void
   hoveredDate: Dayjs | null
-  updateHoveredDate: (date: Dayjs) => void
+  updateHoveredDate: (date: Dayjs | null) => void
 }
 
 export const DatetimePickerContext = createContext<DatetimePickerContext>({
@@ -38,7 +38,7 @@ export const DatetimePickerContext = createContext<DatetimePickerContext>({
   updateRange: (range: DateRange) => {},
   hoveredDate: null,
   // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
-  updateHoveredDate: (date: Dayjs) => {},
+  updateHoveredDate: (date: Dayjs | null) => {},
 })
 
 export const useDatetimePickerContext = (): DatetimePickerContext => {
