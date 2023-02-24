@@ -28,6 +28,8 @@ export default [
       typescript({
         ...tsconfig.compilerOptions,
         jsx: 'react',
+        declaration: true,
+        declarationDir: 'dist',
       }),
     ],
   },

@@ -9,6 +9,7 @@
   "license": "MIT",
   "scripts": {
     "build": "yarn pretti && yarn lint && rollup -c",
+    "clean": "rm -rf dist",
     "watch": "rollup -c -w",
     "dev": "next dev",
     "pretti": "prettier -c .",

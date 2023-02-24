@@ -8,8 +8,6 @@
     "strict": true,
     "skipLibCheck": true,
     "baseUrl": "./src",
-    "declaration": true,
-    "declarationDir": "dist",
     "paths": {
       "*": ["./*"],
       "@types": ["../types.ts"]
@@ -29,5 +27,5 @@
     ]
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist", "build", "rollup.config.mjs"]
 }
