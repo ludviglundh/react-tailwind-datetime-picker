@@ -1,5 +1,5 @@
 {
-  "name": "react-tailwind-datetime-picker",
+  "name": "@ludviglundh/react-tailwind-datetime-picker",
   "version": "1.0.0",
   "description": "A React Datetime Picker using TailwindCss and Dayjs",
   "main": "dist/index.cjs.js",
@@ -8,7 +8,8 @@
   "author": "Ludvig Lundh",
   "license": "MIT",
   "scripts": {
-    "build": "yarn pretti && yarn lint && rollup -c",
+    "build": "next build",
+    "rollup:build": "yarn pretti && yarn lint && rollup -c",
     "clean": "rm -rf dist",
     "watch": "rollup -c -w",
     "dev": "next dev",
