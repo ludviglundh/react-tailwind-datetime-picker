@@ -31,20 +31,4 @@ export default [
       }),
     ],
   },
-  {
-    input: 'src/types.ts',
-    output: [
-      {
-        file: packagejson.types,
-        format: 'cjs',
-        exports: 'auto',
-        sourcemap: 'true',
-      },
-    ],
-    plugins: [
-      resolve(),
-      commonjs(),
-      typescript({ ...tsconfig.compilerOptions, jsx: 'react' }),
-    ],
-  },
 ]
