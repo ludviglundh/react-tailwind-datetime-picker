@@ -184,27 +184,6 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
     [rightDate, leftDate]
   )
 
-  const handleLeftTimeChange = useCallback(
-    (time: string, range: 'first' | 'second') => {
-      const [hours, minutes, seconds] = time.split(':')
-
-      if (range === 'first') {
-        const nextDate = leftDate
-          .hour(Number(hours))
-          .minute(Number(minutes))
-          .second(Number(seconds))
-        setLeftDate(nextDate)
-      } else {
-        const nextDate = rightDate
-          .hour(Number(hours))
-          .minute(Number(minutes))
-          .second(Number(seconds))
-        setRightDate(nextDate)
-      }
-    },
-    [leftDate, rightDate]
-  )
-
   return (
     <DatetimePickerContext.Provider value={context}>
       <div
@@ -225,7 +204,6 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
             onPreviousClick={() => handlePreviousClick('first')}
             onNextClick={() => handleNextClick('first')}
             selectorOpen={leftSelectorOpen}
-            onTimeChange={(time: string) => handleLeftTimeChange(time, 'first')}
           />
 
           {useDouble && (
@@ -237,9 +215,6 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
               onPreviousClick={() => handlePreviousClick('second')}
               onNextClick={() => handleNextClick('second')}
               selectorOpen={rightSelectorOpen}
-              onTimeChange={(time: string) =>
-                handleLeftTimeChange(time, 'second')
-              }
             />
           )}
         </div>

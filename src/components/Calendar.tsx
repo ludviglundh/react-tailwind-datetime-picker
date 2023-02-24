@@ -24,7 +24,6 @@ export const Calendar: FC<CalendarProps> = ({
   onPreviousClick,
   onSelectMonth,
   onSelectYear,
-  onTimeChange,
   selectorOpen,
   data,
 }) => {
@@ -465,9 +464,6 @@ export const Calendar: FC<CalendarProps> = ({
             </div>
           </div>
         )}
-        <div className="px-4 py-2">
-          {/* <Timepicker onChange={onTimeChange} /> */}
-        </div>
       </div>
     </div>
   )
