@@ -107,7 +107,6 @@ export interface DatetimePickerConfig {
 }
 
 // Components
-
 export interface DatetimePickerProps {
   onChange: (range: DateRange) => void
   value: DateRange
@@ -137,7 +136,6 @@ export interface CalendarProps {
   onSelectorClick: () => void
   onSelectMonth: (month: number) => void
   onSelectYear: (year: number) => void
-  onTimeChange: (time: string) => void
   data: CalendarData
   selectorOpen: boolean
 }

@@ -1,17 +1,29 @@
 {
   "name": "react-tailwind-datetime-picker",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
+  "description": "A React Datetime Picker using TailwindCss and Dayjs",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/types.d.ts",
   "author": "Ludvig Lundh",
   "license": "MIT",
+  "scripts": {
+    "build": "yarn pretti && yarn lint && rollup -c",
+    "watch": "rollup -c -w",
+    "dev": "next dev",
+    "pretti": "prettier -c .",
+    "pretti:fix": "prettier -w .",
+    "lint": "eslint .",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2 || ^18.2.0",
+    "dayjs": "^1.11.7"
+  },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-typescript": "^11.0.0",
     "@tailwindcss/forms": "^0.5.3",
     "@types/node": "18.14.0",
     "@types/react-dom": "^18.0.11",
@@ -31,6 +43,7 @@
     "prettier": "^2.8.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "rollup": "^3.17.2",
     "tailwind-scrollbar": "^2.1.0",
     "tailwindcss": "^3.2.7",
     "typescript": "^4.9.5"

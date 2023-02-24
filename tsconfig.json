@@ -10,7 +10,7 @@
     "baseUrl": "./src",
     "paths": {
       "*": ["./*"],
-      "@types": ["../types.ts"],
+      "@types": ["../types.ts"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -26,6 +26,6 @@
       }
     ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules"]
 }

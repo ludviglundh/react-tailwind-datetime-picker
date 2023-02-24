@@ -48,11 +48,9 @@ export default function Index() {
               config={{
                 i18n: 'sv',
                 useDouble: true,
-                disabledDates: [
-                  dayjs('2023-03-02'),
-                  dayjs('2023-02-10'),
-                  dayjs('2023-01-31'),
-                ],
+                disabledDates: [dayjs('2023-02-10'), dayjs('2023-02-15')],
+                maxDate: dayjs('2023-02-25'),
+                minDate: dayjs('2023-02-07'),
               }}
             />
           </div>
