@@ -1,3 +1,7 @@
+# React Tailwind Datetime Picker
+
+⚠️ Please note that this is a work in progress. I'm learning npm and rollup as I go
+
 
 
 Install
