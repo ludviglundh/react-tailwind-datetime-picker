@@ -38,6 +38,7 @@ Implemented as of current version:
 * ✅ Typescript Support
 
 Upcoming:
+* ⬜ Timepicker
 * ⬜ Localization support using i18n (en & sv works for now)
 * ⬜ Custom Theme
 * ⬜ React-hook-form Support
