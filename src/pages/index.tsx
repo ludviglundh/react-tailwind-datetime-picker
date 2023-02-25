@@ -1,8 +1,8 @@
 import classNames from 'classnames'
-import DatetimePicker from 'components/DatetimePicker'
+import DatetimePicker from '../components/DatetimePicker'
 import dayjs from 'dayjs'
 import { useEffect, useState } from 'react'
-import { DateRange } from 'types'
+import { DateRange } from '../types'
 
 export default function Index() {
   const [value, setValue] = useState<DateRange>({ start: null, end: null })
@@ -47,10 +47,7 @@ export default function Index() {
               onChange={onChange}
               config={{
                 i18n: 'sv',
-                useDouble: true,
-                disabledDates: [dayjs('2023-02-10'), dayjs('2023-02-15')],
-                maxDate: dayjs('2023-02-25'),
-                minDate: dayjs('2023-02-07'),
+
               }}
             />
           </div>

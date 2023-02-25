@@ -1,20 +1,21 @@
+import type { FC } from 'react'
 import dayjs from 'dayjs'
 import isBetween from 'dayjs/plugin/isBetween'
 import classNames from 'classnames'
-import { useDatetimePickerContext } from 'contexts/DatetimePickerContext'
-import { useThemeContext } from 'contexts/ThemeContext'
-import { FC, useCallback, useState } from 'react'
+import { useDatetimePickerContext } from '../contexts/DatetimePickerContext'
+import { useThemeContext } from '../contexts/ThemeContext'
+import { useCallback, useState } from 'react'
 import {
   generateArrayOfYears,
   getFormattedMonths,
   getFormattedWeekDays,
   getNextMonth,
   getPreviousMonth,
-} from 'utils/dateUtils'
+} from '../utils/dateUtils'
 
 import { Selector } from './Selector'
-import { loadI18n } from 'utils/i18nUtils'
-import { CalendarProps, DisabledDate, ThemeBoolReturnType } from 'types'
+import { loadI18n } from '../utils/i18nUtils'
+import { CalendarProps, DisabledDate, ThemeBoolReturnType } from '../types'
 
 dayjs.extend(isBetween)
 
@@ -418,25 +419,23 @@ export const Calendar: FC<CalendarProps> = ({
         {selectorOpen && (
           <div className={classNames(theme.inner.selector.base)}>
             <div className={classNames(theme.inner.selector.items.base)}>
-              {getFormattedMonths(data.date, i18n).map(
-                (month, index: number) => (
-                  <button
-                    className={classNames(
-                      theme.inner.selector.items.item,
-                      theme.inner.current.current[
-                        dayjs().month() === index ? 'true' : 'false'
-                      ],
-                      theme.inner.selector.current[
-                        data.date.month() === index ? 'true' : 'false'
-                      ]
-                    )}
-                    key={month}
-                    onClick={() => onSelectMonth(index)}
-                  >
-                    <span>{month}</span>
-                  </button>
-                )
-              )}
+              {getFormattedMonths(i18n).map((month, index: number) => (
+                <button
+                  className={classNames(
+                    theme.inner.selector.items.item,
+                    theme.inner.current.current[
+                      dayjs().month() === index ? 'true' : 'false'
+                    ],
+                    theme.inner.selector.current[
+                      data.date.month() === index ? 'true' : 'false'
+                    ]
+                  )}
+                  key={month}
+                  onClick={() => onSelectMonth(index)}
+                >
+                  <span>{month}</span>
+                </button>
+              ))}
             </div>
             <div className={classNames(theme.inner.selector.separator)} />
             <div className={classNames(theme.inner.selector.items.base)}>

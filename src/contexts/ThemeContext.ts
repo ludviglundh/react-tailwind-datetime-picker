@@ -1,6 +1,6 @@
-import type { ThemeContextProps } from 'types'
+import type { ThemeContextProps } from '../types'
 import { createContext, useContext } from 'react'
-import defaultTheme from 'theme/default'
+import defaultTheme from '../theme/default'
 
 export const ThemeContext = createContext<ThemeContextProps>({
   theme: defaultTheme,

@@ -1,10 +1,11 @@
 import type { FC } from 'react'
-import type { IconProps } from 'types'
+import type { IconProps } from '../types'
 
 export const CalendarIcon: FC<IconProps> = ({ className = 'w-6 h-6' }) => {
   return (
     <svg
       viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
       stroke="currentColor"

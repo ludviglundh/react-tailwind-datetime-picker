@@ -49,11 +49,7 @@ export const getFormattedMonthAndYear = (date: Dayjs, i18n: string) => {
   return dayjs(date).locale(i18n).format('MMMM YYYY').toUpperCase()
 }
 
-export const getFormattedMonths = (
-  date: Dayjs,
-  i18n: string,
-  format = 'MMM'
-) => {
+export const getFormattedMonths = (i18n: string, format = 'MMM') => {
   return Array.from(Array(12).keys()).map((number: number) =>
     dayjs(`2022-${1 + number}-01`)
       .locale(i18n)

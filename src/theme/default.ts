@@ -1,4 +1,4 @@
-import { DatetimePickerTheme } from 'types'
+import { DatetimePickerTheme } from '../types'
 
 const theme: DatetimePickerTheme = {
   base: 'bg-white h-fit border-2 border-gray-300 shadow-lg rounded-md border-b-2 relative dark:bg-slate-800 dark:border-slate-700',

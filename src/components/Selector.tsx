@@ -1,16 +1,16 @@
-import { FC } from 'react'
+import type { FC } from 'react'
 import classNames from 'classnames'
-import { useDatetimePickerContext } from 'contexts/DatetimePickerContext'
-import { useThemeContext } from 'contexts/ThemeContext'
+import { useDatetimePickerContext } from '../contexts/DatetimePickerContext'
+import { useThemeContext } from '../contexts/ThemeContext'
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
   DoubleChevronLeftIcon,
   DoubleChevronRightIcon,
-} from 'icons'
-import { getFormattedMonthAndYear } from 'utils/dateUtils'
-import { loadI18n } from 'utils/i18nUtils'
-import { SelectorProps } from 'types'
+} from '../icons'
+import { getFormattedMonthAndYear } from '../utils/dateUtils'
+import { loadI18n } from '../utils/i18nUtils'
+import { SelectorProps } from '../types'
 
 export const Selector: FC<SelectorProps> = ({
   onNextClick,

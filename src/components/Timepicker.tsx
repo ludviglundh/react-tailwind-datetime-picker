@@ -1,9 +1,10 @@
+import type { FC } from 'react'
 import classNames from 'classnames'
-import useOutsideClick from 'hooks/useOutsideClick'
-import { ClockIcon } from 'icons/Clock'
-import { FC, useCallback, useMemo, useRef, useState } from 'react'
-import { Time } from 'types'
-import { generateHoursMinutesAndSeconds } from 'utils/dateUtils'
+import useOutsideClick from '../hooks/useOutsideClick'
+import { ClockIcon } from '../icons/Clock'
+import { useCallback, useMemo, useRef, useState } from 'react'
+import { Time } from '../types'
+import { generateHoursMinutesAndSeconds } from '../utils/dateUtils'
 import { Arrow } from './Arrow'
 
 interface TimepickerProps {

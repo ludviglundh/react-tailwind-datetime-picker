@@ -1,26 +1,26 @@
-import { FC, useCallback, useEffect, useState } from 'react'
-import classNames from 'classnames'
-import { useMemo } from 'react'
-import { DatetimePickerContext } from 'contexts/DatetimePickerContext'
-import { useThemeContext } from 'contexts/ThemeContext'
-
+import type { FC } from 'react'
 import dayjs, { Dayjs } from 'dayjs'
+import { useCallback, useEffect, useState } from 'react'
+import { useMemo } from 'react'
+import { DatetimePickerContext } from '../contexts/DatetimePickerContext'
+import { useThemeContext } from '../contexts/ThemeContext'
 import {
   getDaysInMonth,
   getFirstDaysOfMonth,
   getLastDaysOfMonth,
   getNextMonth,
   getPreviousMonth,
-} from 'utils/dateUtils'
+} from '../utils/dateUtils'
 import { Calendar } from './Calendar'
-import { CalendarData, DateRange, DatetimePickerProps } from 'types'
+import { CalendarData, DateRange, DatetimePickerProps } from '../types'
+import classNames from 'classnames'
 
 const DatetimePicker: FC<DatetimePickerProps> = ({
   onChange,
   value,
   disabled = false,
   config: {
-    i18n = '',
+    i18n = 'en',
     useDouble = true,
     useTimepicker = true,
     useSingleValue = false,
@@ -198,8 +198,8 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
         <div className={classNames(theme.inner.base)}>
           <Calendar
             data={data[0]}
-            onSelectMonth={(month) => handleSelectMonth(month, 'first')}
-            onSelectYear={(year) => handleSelectYear(year, 'first')}
+            onSelectMonth={(month: number) => handleSelectMonth(month, 'first')}
+            onSelectYear={(year: number) => handleSelectYear(year, 'first')}
             onSelectorClick={() => handleSelectorClick('first')}
             onPreviousClick={() => handlePreviousClick('first')}
             onNextClick={() => handleNextClick('first')}
@@ -209,8 +209,10 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
           {useDouble && (
             <Calendar
               data={data[1]}
-              onSelectMonth={(month) => handleSelectMonth(month, 'second')}
-              onSelectYear={(year) => handleSelectYear(year, 'second')}
+              onSelectMonth={(month: number) =>
+                handleSelectMonth(month, 'second')
+              }
+              onSelectYear={(year: number) => handleSelectYear(year, 'second')}
               onSelectorClick={() => handleSelectorClick('second')}
               onPreviousClick={() => handlePreviousClick('second')}
               onNextClick={() => handleNextClick('second')}

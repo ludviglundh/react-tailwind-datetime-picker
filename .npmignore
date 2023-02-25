@@ -16,3 +16,9 @@ postcss.config.js
 tailwind.config.js
 tsconfig.json
 yarn-error.log
+
+.prettierignore
+.eslintignore
+tsconfig.tsbuildinfo
+tsup.config.ts
+

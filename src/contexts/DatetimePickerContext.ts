@@ -1,6 +1,6 @@
 import dayjs, { Dayjs } from 'dayjs'
 import { createContext, useContext } from 'react'
-import { DateRange, DisabledDate } from 'types'
+import { DateRange, DisabledDate } from '../types'
 
 interface DatetimePickerContext {
   maxDate?: Dayjs | null
@@ -40,11 +40,13 @@ export const DatetimePickerContext = createContext<DatetimePickerContext>({
     start: null,
     end: null,
   },
-  // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
-  updateRange: (range: DateRange) => {},
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
+  updateRange: (_range: DateRange) => {},
   hoveredDate: null,
-  // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
-  updateHoveredDate: (date: Dayjs | null) => {},
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
+  updateHoveredDate: (_date: Dayjs | null) => {},
 })
 
 export const useDatetimePickerContext = (): DatetimePickerContext => {

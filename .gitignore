@@ -35,7 +35,6 @@ yarn-error.log*
 # vercel
 .vercel
 
-.rollup.cache
 dist
-
 tsconfig.tsbuildinfo
+.rollup.cache

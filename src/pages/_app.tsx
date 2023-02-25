@@ -1,7 +1,7 @@
 import '../../styles/globals.css'
 import { AppProps } from 'next/app'
-import { ThemeContext } from 'contexts/ThemeContext'
-import theme from 'theme/default'
+import { ThemeContext } from '../contexts/ThemeContext'
+import theme from '../theme/default'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

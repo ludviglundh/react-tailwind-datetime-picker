@@ -1,5 +1,5 @@
-import type { ArrowProps } from 'types'
 import type { FC } from 'react'
+import type { ArrowProps } from '../types'
 import classNames from 'classnames'
 
 export const Arrow: FC<ArrowProps> = ({ className }) => {

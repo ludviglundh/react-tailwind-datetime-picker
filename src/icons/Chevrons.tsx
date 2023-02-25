@@ -1,5 +1,5 @@
-import { FC } from 'react'
-import type { IconProps } from 'types'
+import type { FC } from 'react'
+import type { IconProps } from '../types'
 
 export const ChevronRightIcon: FC<IconProps> = ({ className = 'w-6 h-6' }) => {
   return (

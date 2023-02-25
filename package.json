@@ -1,31 +1,58 @@
 {
-  "name": "@ludviglundh/react-tailwind-datetime-picker",
-  "version": "1.0.0",
+  "name": "react-tailwind-datetime-picker",
+  "version": "1.0.12",
   "description": "A React Datetime Picker using TailwindCss and Dayjs",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
-  "types": "dist/types.d.ts",
   "author": "Ludvig Lundh",
   "license": "MIT",
+  "keywords": [
+    "react",
+    "datepicker",
+    "timepicker",
+    "tailwindcss"
+  ],
+  "source": "src/index.ts",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.esm.mjs",
+      "require": "./dist/index.cjs.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ludviglundh/react-tailwind-datetime-picker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ludviglundh/react-tailwind-datetime-picker/issues"
+  },
   "scripts": {
+    "bundle": "yarn clean && rollup -c",
+    "publish": "yarn build && npm publish",
     "build": "next build",
-    "rollup:build": "yarn pretti && yarn lint && rollup -c",
-    "clean": "rm -rf dist",
-    "watch": "rollup -c -w",
-    "dev": "next dev",
+    "clean": "rm -rf dist && rm -rf .rollup.cache && rm -rf .next && rm -rf tsconfig.tsbuildinfo",
+    "watch": "tsup --watch",
+    "dev": "next dev -p 8888",
     "pretti": "prettier -c .",
     "pretti:fix": "prettier -w .",
     "lint": "eslint .",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "peerDependencies": {
-    "react": "^17.0.2 || ^18.2.0",
-    "dayjs": "^1.11.7"
+    "dayjs": "^1.11.7",
+    "react": "^17.0.2 || ^18.2.0"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^24.0.1",
-    "@rollup/plugin-node-resolve": "^15.0.1",
-    "@rollup/plugin-typescript": "^11.0.0",
+    "@rollup/plugin-commonjs": "^22.0.1",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-typescript": "^9.0.2",
+    "@svgr/rollup": "^6.5.1",
     "@tailwindcss/forms": "^0.5.3",
     "@types/node": "18.14.0",
     "@types/react-dom": "^18.0.11",
@@ -45,9 +72,19 @@
     "prettier": "^2.8.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "rollup": "^3.17.2",
+    "rollup": "^2.77.2",
+    "rollup-plugin-inline-svg": "^3.0.3",
+    "rollup-plugin-sourcemaps": "^0.6.3",
+    "rollup-plugin-svg": "^2.0.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.34.1",
     "tailwind-scrollbar": "^2.1.0",
     "tailwindcss": "^3.2.7",
+    "tslib": "^2.5.0",
+    "tsup": "6.1.3",
     "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "@rollup/plugin-image": "^3.0.2"
   }
 }
