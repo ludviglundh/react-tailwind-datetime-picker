@@ -6,7 +6,7 @@
   </div>
   <br />
   <p align="center">
-    ⚠️ Please note that this is a work in progress. I'm learning npm and rollup as I go
+    ⚠️ Please note that this is a work in progress
   </p>
 </p>
 
@@ -32,13 +32,13 @@ Make sure to also install the peer dependencies as well.
 
 ## Features and Pipeline
 Implemented as of current version:
+* ✅ Timepicker
 * ✅ Dark mode
 * ✅ Min- and Max Date
 * ✅ Disabled Date's
 * ✅ Typescript Support
 
 Upcoming:
-* ⬜ Timepicker
 * ⬜ Localization support using i18n (en & sv works for now)
 * ⬜ Custom Theme
 * ⬜ React-hook-form Support
@@ -81,3 +81,11 @@ const App = () => {
 
 export default App
 ```
+
+## Theme
+
+**Light Mode**
+![Light Mode](https://raw.githubusercontent.com/ludviglundh/react-tailwind-datetime-picker/main/assets/light-mode.png?raw=true)
+
+**Dark Mode**
+![Dark Mode](https://raw.githubusercontent.com/ludviglundh/react-tailwind-datetime-picker/main/assets/dark-mode.png?raw=true)

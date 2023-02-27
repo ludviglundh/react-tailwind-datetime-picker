@@ -8,8 +8,6 @@ export default function Index() {
   const [value, setValue] = useState<DateRange>({ start: null, end: null })
   const [theme, setTheme] = useState<'light' | 'dark'>('dark')
 
-  
-
   const onChange = (range: DateRange) => {
     setValue(range)
   }
