@@ -107,6 +107,7 @@ export interface DatetimePickerConfig {
   useTimepicker?: boolean
   startTimeLabel?: string
   endTimeLabel?: string
+  timepickerNowButtonLabel?: string
 }
 
 export interface DatetimePickerProps {
@@ -148,6 +149,7 @@ export interface TimepickerProps {
   secondsLabel?: string
   placeholder?: string
   label?: string
+  nowButtonLabel?: string
 }
 
 // Contexts

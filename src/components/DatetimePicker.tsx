@@ -31,6 +31,7 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
     disabledDates = null,
     startTimeLabel = 'From',
     endTimeLabel = 'To',
+    timepickerNowButtonLabel = 'Now',
   } = {},
 }) => {
   const theme = useThemeContext().theme
@@ -257,6 +258,7 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
             <Timepicker
               onChange={(value: Time) => handleTimepickerChange(value, 'first')}
               label={startTimeLabel}
+              nowButtonLabel={timepickerNowButtonLabel}
             />
             {!useSingleValue && (
               <Timepicker
@@ -264,6 +266,7 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
                   handleTimepickerChange(value, 'second')
                 }
                 label={endTimeLabel}
+                nowButtonLabel={timepickerNowButtonLabel}
               />
             )}
           </div>
