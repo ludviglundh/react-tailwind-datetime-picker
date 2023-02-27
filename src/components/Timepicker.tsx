@@ -16,6 +16,7 @@ export const Timepicker: FC<TimepickerProps> = ({
   secondsLabel = 'Seconds',
   placeholder = '00:00:00',
   label = '',
+  nowButtonLabel = '',
 }) => {
   const dropdownRef = useRef<HTMLDivElement>(null)
 
@@ -167,7 +168,7 @@ export const Timepicker: FC<TimepickerProps> = ({
             onClick={handleNowClick}
             className="flex border-2 rounded-lg border-slate-400 items-center w-fit hover:bg-slate-400 hover:text-white transition-hover duration-200"
           >
-            <span className="w-full px-2 py-1">Now</span>
+            <span className="w-full px-2 py-1">{nowButtonLabel}</span>
           </button>
         </div>
       </div>
@@ -179,6 +180,7 @@ export const Timepicker: FC<TimepickerProps> = ({
       hoursLabel,
       minutes,
       minutesLabel,
+      nowButtonLabel,
       seconds,
       secondsLabel,
       selectedTime.hour,
