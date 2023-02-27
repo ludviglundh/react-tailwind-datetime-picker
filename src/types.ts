@@ -95,25 +95,25 @@ export interface DatetimePickerTheme {
   }
 }
 
+// Components
 export interface DatetimePickerConfig {
   maxDate?: Date | Dayjs | null
   minDate?: Date | Dayjs | null
   disabledDates?: Date[] | Dayjs[] | null
-  useDouble?: boolean
-  useTimepicker?: boolean
+  useDoubleCalendars?: boolean
   useSingleValue?: boolean
   startFrom?: Date | Dayjs | null
   i18n?: string
+  useTimepicker?: boolean
+  startTimeLabel?: string
+  endTimeLabel?: string
 }
 
-// Components
 export interface DatetimePickerProps {
   onChange: (range: DateRange) => void
   value: DateRange
   disabled?: boolean
   config?: DatetimePickerConfig
-  maxDate?: Date | null
-  minDate?: Date | null
 }
 
 export type ArrowProps = ComponentProps<'div'>
@@ -140,7 +140,37 @@ export interface CalendarProps {
   selectorOpen: boolean
 }
 
+export interface TimepickerProps {
+  onChange: (selectedTime: Time) => void
+  value?: string
+  hoursLabel?: string
+  minutesLabel?: string
+  secondsLabel?: string
+  placeholder?: string
+  label?: string
+}
+
 // Contexts
 export interface ThemeContextProps {
   theme: DatetimePickerTheme
+}
+
+export interface DatetimePickerContext {
+  maxDate?: Dayjs | null
+  minDate?: Dayjs | null
+  disabledDates?: DisabledDate[] | null
+  inputValue: DateRange
+  i18n: string
+  disabled: boolean
+  useDouble: boolean
+  useTimepicker: boolean
+  useSingleValue: boolean
+  leftDate: Dayjs
+  rightDate: Dayjs
+  leftSelectorOpen: boolean
+  rightSelectorOpen: boolean
+  range: DateRange
+  updateRange: (range: DateRange) => void
+  hoveredDate: Dayjs | null
+  updateHoveredDate: (date: Dayjs | null) => void
 }

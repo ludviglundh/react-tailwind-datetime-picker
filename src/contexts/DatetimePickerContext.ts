@@ -1,28 +1,8 @@
+import type { DateRange, DatetimePickerContext as ContextType } from '../types'
 import dayjs, { Dayjs } from 'dayjs'
 import { createContext, useContext } from 'react'
-import { DateRange, DisabledDate } from '../types'
 
-interface DatetimePickerContext {
-  maxDate?: Dayjs | null
-  minDate?: Dayjs | null
-  disabledDates?: DisabledDate[] | null
-  inputValue: DateRange
-  i18n: string
-  disabled: boolean
-  useDouble: boolean
-  useTimepicker: boolean
-  useSingleValue: boolean
-  leftDate: Dayjs
-  rightDate: Dayjs
-  leftSelectorOpen: boolean
-  rightSelectorOpen: boolean
-  range: DateRange
-  updateRange: (range: DateRange) => void
-  hoveredDate: Dayjs | null
-  updateHoveredDate: (date: Dayjs | null) => void
-}
-
-export const DatetimePickerContext = createContext<DatetimePickerContext>({
+export const DatetimePickerContext = createContext<ContextType>({
   maxDate: null,
   minDate: null,
   disabledDates: null,
@@ -49,7 +29,7 @@ export const DatetimePickerContext = createContext<DatetimePickerContext>({
   updateHoveredDate: (_date: Dayjs | null) => {},
 })
 
-export const useDatetimePickerContext = (): DatetimePickerContext => {
+export const useDatetimePickerContext = (): ContextType => {
   const context = useContext(DatetimePickerContext)
   return context
 }

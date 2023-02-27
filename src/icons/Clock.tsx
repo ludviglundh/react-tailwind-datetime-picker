@@ -8,7 +8,7 @@ export const ClockIcon: FC<IconProps> = ({ className = 'w-6 h-6' }) => {
       width="24"
       height="24"
       stroke="currentColor"
-      strokeWidth="1"
+      strokeWidth="2"
       fill="none"
       className={className}
     >

@@ -7,7 +7,7 @@ export const Arrow: FC<ArrowProps> = ({ className }) => {
     <div
       className={classNames(
         className,
-        'absolute top-12 left-2 h-6 w-6 rotate-45 border-t border-l border-gray-300 bg-white z-20 bg-white rounded-[3px]'
+        'absolute top-[74px] left-2 h-6 w-6 rotate-45 border-t-2 border-l-2 border-gray-300 bg-white z-20 bg-white rounded-tl-[3px] dark:bg-slate-800 dark:border-slate-700'
       )}
     ></div>
   )

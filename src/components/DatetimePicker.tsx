@@ -12,8 +12,9 @@ import {
   getPreviousMonth,
 } from '../utils/dateUtils'
 import { Calendar } from './Calendar'
-import { CalendarData, DateRange, DatetimePickerProps } from '../types'
+import { CalendarData, DateRange, DatetimePickerProps, Time } from '../types'
 import classNames from 'classnames'
+import { Timepicker } from './Timepicker'
 
 const DatetimePicker: FC<DatetimePickerProps> = ({
   onChange,
@@ -21,13 +22,15 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
   disabled = false,
   config: {
     i18n = 'en',
-    useDouble = true,
+    useDoubleCalendars = true,
     useTimepicker = true,
     useSingleValue = false,
     startFrom = null,
     maxDate = null,
     minDate = null,
     disabledDates = null,
+    startTimeLabel = 'From',
+    endTimeLabel = 'To',
   } = {},
 }) => {
   const theme = useThemeContext().theme
@@ -50,7 +53,7 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
   const context = useMemo(
     () => ({
       i18n,
-      useDouble,
+      useDouble: useDoubleCalendars,
       useTimepicker,
       useSingleValue,
       startFrom,
@@ -88,7 +91,7 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
       rightDate,
       rightSelectorOpen,
       startFrom,
-      useDouble,
+      useDoubleCalendars,
       useSingleValue,
       useTimepicker,
       value,
@@ -184,6 +187,31 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
     [rightDate, leftDate]
   )
 
+  const handleTimepickerChange = useCallback(
+    (time: Time, type: 'first' | 'second') => {
+      if (type === 'first') {
+        const nextRange: DateRange = {
+          start: dayjs(range.start)
+            .hour(Number(time.hour))
+            .minute(Number(time.minute))
+            .second(Number(time.second)),
+          end: range.end,
+        }
+        setRange(nextRange)
+      } else {
+        const nextRange: DateRange = {
+          start: range.start,
+          end: dayjs(range.start)
+            .hour(Number(time.hour))
+            .minute(Number(time.minute))
+            .second(Number(time.second)),
+        }
+        setRange(nextRange)
+      }
+    },
+    [range.end, range.start]
+  )
+
   return (
     <DatetimePickerContext.Provider value={context}>
       <div
@@ -191,7 +219,7 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
         className={classNames(
           theme.base,
           theme.disabled[disabled ? 'true' : 'false'],
-          theme.useDouble[useDouble ? 'true' : 'false']
+          theme.useDouble[useDoubleCalendars ? 'true' : 'false']
         )}
       >
         {disabled && <div className={theme.inner.disabled} />}
@@ -206,7 +234,7 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
             selectorOpen={leftSelectorOpen}
           />
 
-          {useDouble && (
+          {useDoubleCalendars && (
             <Calendar
               data={data[1]}
               onSelectMonth={(month: number) =>
@@ -220,6 +248,26 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
             />
           )}
         </div>
+        {useTimepicker && (
+          <div
+            className={classNames(
+              'flex items-center w-full px-4 pb-4 gap-4 max-md:flex-col'
+            )}
+          >
+            <Timepicker
+              onChange={(value: Time) => handleTimepickerChange(value, 'first')}
+              label={startTimeLabel}
+            />
+            {!useSingleValue && (
+              <Timepicker
+                onChange={(value: Time) =>
+                  handleTimepickerChange(value, 'second')
+                }
+                label={endTimeLabel}
+              />
+            )}
+          </div>
+        )}
       </div>
     </DatetimePickerContext.Provider>
   )

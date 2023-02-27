@@ -8,6 +8,8 @@ export default function Index() {
   const [value, setValue] = useState<DateRange>({ start: null, end: null })
   const [theme, setTheme] = useState<'light' | 'dark'>('dark')
 
+  
+
   const onChange = (range: DateRange) => {
     setValue(range)
   }
@@ -21,8 +23,8 @@ export default function Index() {
   if (!hydrated) return null
 
   return (
-    <body className={classNames(theme, 'h-screen max-md:h-full')}>
-      <div className="w-screen h-full flex items-center justify-center h-full dark:bg-slate-900 ">
+    <div className={classNames('h-screen w-screen max-md:h-full overflow-y-scroll overflow-x-hidden', theme)}>
+      <div className="w-screen h-full flex items-start justify-center h-full dark:bg-slate-900 lg:pt-20">
         <div className="w-1/2 max-md:w-full max-md:h-full container">
           <div className="flex flex-col flex-1 gap-4 h-full justify-center p-8">
             <button
@@ -47,12 +49,14 @@ export default function Index() {
               onChange={onChange}
               config={{
                 i18n: 'sv',
+                useTimepicker: true
 
               }}
             />
           </div>
         </div>
       </div>
-    </body>
+      </div>
+    
   )
 }
