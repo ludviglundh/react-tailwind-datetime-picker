@@ -45,7 +45,6 @@ export default function Index() {
               onChange={onChange}
               config={{
                 i18n: 'sv',
-                useTimepicker: true
               }}
             />
           </div>

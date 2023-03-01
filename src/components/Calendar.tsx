@@ -37,6 +37,7 @@ export const Calendar: FC<CalendarProps> = ({
     maxDate,
     minDate,
     disabledDates,
+    useSingleValue,
   } = useDatetimePickerContext()
   loadI18n(i18n)
 
@@ -91,6 +92,9 @@ export const Calendar: FC<CalendarProps> = ({
     [data.date, maxDate]
   )
 
+  /**
+   * Resolves disabled dates
+   */
   const resolveDisabledDates = useCallback(
     (day: number, type: 'previous' | 'current' | 'next'): boolean => {
       if (!disabledDates) return false
@@ -115,7 +119,7 @@ export const Calendar: FC<CalendarProps> = ({
   /**
    * Sets range dates
    */
-  const handleDayClick = useCallback(
+  const handleDateClick = useCallback(
     (day: number, type: 'previous' | 'current' | 'next') => {
       const dates = {
         previous: getPreviousMonth(data.date),
@@ -123,6 +127,10 @@ export const Calendar: FC<CalendarProps> = ({
         next: getNextMonth(data.date),
       }
       const nextDate = dates[type].date(day)
+
+      if (useSingleValue) {
+        return updateRange({ start: nextDate, end: nextDate })
+      }
 
       const disabledDate =
         resolveDateTooEarly(day, type) ||
@@ -157,13 +165,14 @@ export const Calendar: FC<CalendarProps> = ({
       resolveDisabledDates,
       updateHoveredDate,
       updateRange,
+      useSingleValue,
     ]
   )
 
   /**
    * Resolves day hover - sets range
    */
-  const resolveHoverDay = useCallback(
+  const resolveHoverDate = useCallback(
     (day: number, type: 'next' | 'current' | 'previous') => {
       const selectedData = {
         previous: getPreviousMonth(data.date.date(day)),
@@ -227,13 +236,13 @@ export const Calendar: FC<CalendarProps> = ({
   /**
    * Resolves range.start class
    */
-  const resolveSelectedStartDayClass = useCallback(
-    (day: number) => {
+  const resolveSelectedStartDateClass = useCallback(
+    (day: number): ThemeBoolReturnType => {
       const sameYear = data.date.year() === range.start?.year()
       const sameMonth = data.date.month() === range.start?.month()
       const sameDay = range.start?.date() === day
 
-      return sameYear && sameMonth && sameDay
+      return sameYear && sameMonth && sameDay ? 'true' : 'false'
     },
     [data.date, range.start]
   )
@@ -241,13 +250,13 @@ export const Calendar: FC<CalendarProps> = ({
   /**
    * Resolves range.end class
    */
-  const resolveSelectedEndDayClass = useCallback(
-    (day: number) => {
+  const resolveSelectedEndDateClass = useCallback(
+    (day: number): ThemeBoolReturnType => {
       const sameYear = data.date.year() === range.end?.year()
       const sameMonth = data.date.month() === range.end?.month()
       const sameDay = range.end?.date() === day
 
-      return sameYear && sameMonth && sameDay
+      return sameYear && sameMonth && sameDay ? 'true' : 'false'
     },
     [data.date, range.end]
   )
@@ -287,7 +296,7 @@ export const Calendar: FC<CalendarProps> = ({
   /**
    * Resolves hovered day class if there is no range.start
    */
-  const resolveHoveredStartDayClass = useCallback(
+  const resolveHoveredStartDateClass = useCallback(
     (day: number): ThemeBoolReturnType => {
       return !range.start && hoveredDate?.isSame(data.date.date(day))
         ? 'true'
@@ -345,8 +354,8 @@ export const Calendar: FC<CalendarProps> = ({
                       ]
                     )}
                     key={`${day}-${index}`}
-                    onClick={() => handleDayClick(day, 'previous')}
-                    onMouseOver={() => resolveHoverDay(day, 'previous')}
+                    onClick={() => handleDateClick(day, 'previous')}
+                    onMouseOver={() => resolveHoverDate(day, 'previous')}
                   >
                     <span>{day}</span>
                   </button>
@@ -360,10 +369,10 @@ export const Calendar: FC<CalendarProps> = ({
                       theme.inner.current.hover[resolveHoverClass(day)],
                       theme.inner.current.current[resolveCurrentDateClass(day)],
                       theme.inner.current.start.selected[
-                        resolveSelectedStartDayClass(day) ? 'true' : 'false'
+                        resolveSelectedStartDateClass(day)
                       ],
                       theme.inner.current.end.selected[
-                        resolveSelectedEndDayClass(day) ? 'true' : 'false'
+                        resolveSelectedEndDateClass(day)
                       ],
                       theme.inner.current.disabled[
                         resolveDateTooEarly(day, 'current') ? 'true' : 'false'
@@ -378,12 +387,12 @@ export const Calendar: FC<CalendarProps> = ({
                         resolveHoveredEndDayClass(day)
                       ],
                       theme.inner.current.start.hovered[
-                        resolveHoveredStartDayClass(day)
+                        resolveHoveredStartDateClass(day)
                       ]
                     )}
                     key={`${day}-${index}`}
-                    onClick={() => handleDayClick(day, 'current')}
-                    onMouseOver={() => resolveHoverDay(day, 'current')}
+                    onClick={() => handleDateClick(day, 'current')}
+                    onMouseOver={() => resolveHoverDate(day, 'current')}
                   >
                     <span>{day}</span>
                   </button>
@@ -405,8 +414,8 @@ export const Calendar: FC<CalendarProps> = ({
                       ]
                     )}
                     key={`${day}-${index}`}
-                    onClick={() => handleDayClick(day, 'next')}
-                    onMouseOver={() => resolveHoverDay(day, 'next')}
+                    onClick={() => handleDateClick(day, 'next')}
+                    onMouseOver={() => resolveHoverDate(day, 'next')}
                   >
                     <span>{day}</span>
                   </button>

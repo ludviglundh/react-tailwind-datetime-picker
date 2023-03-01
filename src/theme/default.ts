@@ -1,7 +1,7 @@
 import { DatetimePickerTheme } from '../types'
 
 const theme: DatetimePickerTheme = {
-  base: 'bg-white h-fit border-2 border-gray-300 shadow-lg rounded-md border-b-2 relative dark:bg-slate-800 dark:border-slate-700',
+  base: 'bg-white w-full h-fit border-2 border-gray-300 shadow-lg rounded-md border-b-2 relative dark:bg-slate-800 dark:border-slate-700',
   disabled: {
     true: 'border-gray-100 cursor-not-allowed',
     false: 'bg-white',
@@ -62,7 +62,7 @@ const theme: DatetimePickerTheme = {
         },
         start: {
           selected: {
-            true: 'bg-blue-400 rounded-l-lg dark:bg-blue-600/80',
+            true: 'bg-blue-400 !rounded-l-lg dark:bg-blue-600/80',
             false: '',
           },
           hovered: {
@@ -72,7 +72,7 @@ const theme: DatetimePickerTheme = {
         },
         end: {
           selected: {
-            true: 'bg-blue-400 rounded-r-lg dark:bg-blue-600/80',
+            true: 'bg-blue-400 !rounded-r-lg dark:bg-blue-600/80',
             false: '',
           },
           hovered: {
