@@ -1,4 +1,7 @@
-import type { DateRange, DatetimePickerContext as ContextType } from '../types'
+import type {
+  InternalDateRange,
+  DatetimePickerContext as ContextType,
+} from '../types'
 import dayjs, { Dayjs } from 'dayjs'
 import { createContext, useContext } from 'react'
 
@@ -6,7 +9,6 @@ export const DatetimePickerContext = createContext<ContextType>({
   maxDate: null,
   minDate: null,
   disabledDates: null,
-  inputValue: { start: null, end: null },
   i18n: '',
   disabled: false,
   useDouble: false,
@@ -22,7 +24,7 @@ export const DatetimePickerContext = createContext<ContextType>({
   },
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
-  updateRange: (_range: DateRange) => {},
+  updateRange: (_range: InternalDateRange) => {},
   hoveredDate: null,
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
