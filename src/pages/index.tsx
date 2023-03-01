@@ -1,14 +1,13 @@
 import classNames from 'classnames'
 import DatetimePicker from '../components/DatetimePicker'
-import dayjs from 'dayjs'
 import { useEffect, useState } from 'react'
-import { DateRange } from '../types'
+import { PublicDateRange } from '../types'
 
 export default function Index() {
-  const [value, setValue] = useState<DateRange>({ start: null, end: null })
+  const [value, setValue] = useState<PublicDateRange>({ start: new Date(), end: new Date() })
   const [theme, setTheme] = useState<'light' | 'dark'>('dark')
 
-  const onChange = (range: DateRange) => {
+  const onChange = (range: PublicDateRange) => {
     setValue(range)
   }
 
@@ -43,12 +42,10 @@ export default function Index() {
               </div>
             </div>
             <DatetimePicker
-              value={value}
               onChange={onChange}
               config={{
                 i18n: 'sv',
                 useTimepicker: true
-
               }}
             />
           </div>

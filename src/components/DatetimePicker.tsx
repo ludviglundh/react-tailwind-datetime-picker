@@ -12,15 +12,19 @@ import {
   getPreviousMonth,
 } from '../utils/dateUtils'
 import { Calendar } from './Calendar'
-import { CalendarData, DateRange, DatetimePickerProps, Time } from '../types'
+import {
+  CalendarData,
+  InternalDateRange,
+  DatetimePickerProps,
+  Time,
+} from '../types'
 import classNames from 'classnames'
 import { Timepicker } from './Timepicker'
 
 const DatetimePicker: FC<DatetimePickerProps> = ({
   onChange,
-  value,
-  disabled = false,
   config: {
+    disabled = false,
     i18n = 'en',
     useDoubleCalendars = true,
     useTimepicker = true,
@@ -44,7 +48,10 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
   const [leftSelectorOpen, setLeftSelectorOpen] = useState<boolean>(false)
   const [rightSelectorOpen, setRightSelectorOpen] = useState<boolean>(false)
 
-  const [range, setRange] = useState<DateRange>({ start: null, end: null })
+  const [range, setRange] = useState<InternalDateRange>({
+    start: null,
+    end: null,
+  })
   const [hoveredDate, setHoveredDate] = useState<Dayjs | null>(null)
 
   useEffect(() => {
@@ -67,14 +74,14 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
           return null
         }),
       onChange,
-      inputValue: value,
+
       disabled,
       leftDate,
       rightDate,
       leftSelectorOpen,
       rightSelectorOpen,
       range,
-      updateRange: (range: DateRange) => setRange(range),
+      updateRange: (range: InternalDateRange) => setRange(range),
       hoveredDate,
       updateHoveredDate: (date: Dayjs | null) => setHoveredDate(date),
     }),
@@ -95,7 +102,6 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
       useDoubleCalendars,
       useSingleValue,
       useTimepicker,
-      value,
     ]
   )
 
@@ -191,7 +197,7 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
   const handleTimepickerChange = useCallback(
     (time: Time, type: 'first' | 'second') => {
       if (type === 'first') {
-        const nextRange: DateRange = {
+        const nextRange: InternalDateRange = {
           start: dayjs(range.start)
             .hour(Number(time.hour))
             .minute(Number(time.minute))
@@ -200,7 +206,7 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
         }
         setRange(nextRange)
       } else {
-        const nextRange: DateRange = {
+        const nextRange: InternalDateRange = {
           start: range.start,
           end: dayjs(range.start)
             .hour(Number(time.hour))

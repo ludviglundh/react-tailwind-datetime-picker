@@ -7,10 +7,15 @@ export interface ThemeBool {
   true: string
   false: string
 }
-export interface DateRange {
+export interface InternalDateRange {
   start: Dayjs | null
   end: Dayjs | null
 }
+export interface PublicDateRange {
+  start: Date | Dayjs | null
+  end: Date | Dayjs | null
+}
+
 export type Time = {
   hour: string
   minute: string
@@ -108,12 +113,11 @@ export interface DatetimePickerConfig {
   startTimeLabel?: string
   endTimeLabel?: string
   timepickerNowButtonLabel?: string
+  disabled?: boolean
 }
 
 export interface DatetimePickerProps {
-  onChange: (range: DateRange) => void
-  value: DateRange
-  disabled?: boolean
+  onChange: (range: PublicDateRange) => void
   config?: DatetimePickerConfig
 }
 
@@ -161,7 +165,6 @@ export interface DatetimePickerContext {
   maxDate?: Dayjs | null
   minDate?: Dayjs | null
   disabledDates?: DisabledDate[] | null
-  inputValue: DateRange
   i18n: string
   disabled: boolean
   useDouble: boolean
@@ -171,8 +174,8 @@ export interface DatetimePickerContext {
   rightDate: Dayjs
   leftSelectorOpen: boolean
   rightSelectorOpen: boolean
-  range: DateRange
-  updateRange: (range: DateRange) => void
+  range: InternalDateRange
+  updateRange: (range: InternalDateRange) => void
   hoveredDate: Dayjs | null
   updateHoveredDate: (date: Dayjs | null) => void
 }
