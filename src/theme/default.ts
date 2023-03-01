@@ -57,7 +57,7 @@ const theme: DatetimePickerTheme = {
           false: 'dark:text-white/80',
         },
         current: {
-          true: 'text-blue-600',
+          true: '!text-blue-600',
           false: '',
         },
         start: {
