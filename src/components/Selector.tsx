@@ -11,6 +11,7 @@ import {
 import { getFormattedMonthAndYear } from '../utils/dateUtils'
 import { loadI18n } from '../utils/i18nUtils'
 import { SelectorProps } from '../types'
+import { deepMerge } from 'utils/deepMerge'
 
 export const Selector: FC<SelectorProps> = ({
   onNextClick,
@@ -19,10 +20,13 @@ export const Selector: FC<SelectorProps> = ({
   onSelectorClick,
   date,
 }) => {
-  const { i18n } = useDatetimePickerContext()
+  const { i18n, customTheme } = useDatetimePickerContext()
 
   loadI18n(i18n)
-  const theme = useThemeContext().theme.monthSelector
+  const theme = deepMerge(
+    useThemeContext().theme.monthSelector,
+    customTheme?.monthSelector ?? {}
+  )
 
   return (
     <div className={classNames(theme.base)} id="month-selector">

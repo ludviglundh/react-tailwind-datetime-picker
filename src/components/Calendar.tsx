@@ -16,6 +16,7 @@ import {
 import { Selector } from './Selector'
 import { loadI18n } from '../utils/i18nUtils'
 import { CalendarProps, DisabledDate, ThemeBoolReturnType } from '../types'
+import { deepMerge } from 'utils/deepMerge'
 
 dayjs.extend(isBetween)
 
@@ -38,6 +39,7 @@ export const Calendar: FC<CalendarProps> = ({
     minDate,
     disabledDates,
     useSingleValue,
+    customTheme,
   } = useDatetimePickerContext()
   loadI18n(i18n)
 
@@ -51,7 +53,10 @@ export const Calendar: FC<CalendarProps> = ({
     setYearInterval((p) => p - 13)
   }, [])
 
-  const theme = useThemeContext().theme.calendar
+  const theme = deepMerge(
+    useThemeContext().theme.calendar,
+    customTheme?.calendar ?? {}
+  )
 
   /**
    * Resolves date is earlier than minDate

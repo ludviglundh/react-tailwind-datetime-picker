@@ -6,6 +6,7 @@ import dayjs, { Dayjs } from 'dayjs'
 import { createContext, useContext } from 'react'
 
 export const DatetimePickerContext = createContext<ContextType>({
+  customTheme: null,
   maxDate: null,
   minDate: null,
   disabledDates: null,

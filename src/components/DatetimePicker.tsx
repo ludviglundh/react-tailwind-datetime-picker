@@ -20,9 +20,11 @@ import {
 } from '../types'
 import classNames from 'classnames'
 import { Timepicker } from './Timepicker'
+import { deepMerge } from 'utils/deepMerge'
 
 const DatetimePicker: FC<DatetimePickerProps> = ({
   onChange,
+  theme: customTheme,
   config: {
     disabled = false,
     i18n = 'en',
@@ -38,7 +40,7 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
     timepickerNowButtonLabel = 'Now',
   } = {},
 }) => {
-  const theme = useThemeContext().theme
+  const theme = deepMerge(useThemeContext().theme, customTheme ?? {})
 
   const [leftDate, setLeftDate] = useState<Dayjs>(
     dayjs(startFrom).isValid() ? dayjs(startFrom) : dayjs()
@@ -60,6 +62,7 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
 
   const context = useMemo(
     () => ({
+      customTheme: customTheme ?? null,
       i18n,
       useDouble: useDoubleCalendars,
       useTimepicker,
@@ -86,6 +89,7 @@ const DatetimePicker: FC<DatetimePickerProps> = ({
       updateHoveredDate: (date: Dayjs | null) => setHoveredDate(date),
     }),
     [
+      customTheme,
       disabled,
       disabledDates,
       hoveredDate,

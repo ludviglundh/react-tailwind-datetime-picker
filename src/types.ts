@@ -29,9 +29,75 @@ export type CalendarData = {
     next: number[]
   }
 }
+
 export type DisabledDate = Dayjs | null
 
+export type DeepPartial<T> = T extends object
+  ? {
+      [P in keyof T]?: DeepPartial<T[P]>
+    }
+  : T
+
 // Theme
+
+export interface PublicDatePimepickerTheme {
+  base?: string
+  monthSelector?: {
+    base?: string
+    selector?: {
+      base?: string
+      previous?: string
+      month?: string
+      year?: string
+      next?: string
+    }
+  }
+  calendar?: {
+    base?: string
+    inner?: {
+      base?: string
+      week?: {
+        base?: string
+        item?: string
+        current?: ThemeBool
+      }
+      calendar?: {
+        base?: string
+      }
+      previous: {
+        base?: string
+        disabled?: ThemeBool
+      }
+      current?: {
+        base?: string
+        disabled?: ThemeBool
+        current?: ThemeBool
+        start?: {
+          selected?: ThemeBool
+          hovered?: ThemeBool
+        }
+        end?: {
+          selected?: ThemeBool
+          hovered?: ThemeBool
+        }
+        hover?: ThemeBool
+      }
+      next?: {
+        base?: string
+        disabled?: ThemeBool
+      }
+      selector?: {
+        base?: string
+        separator?: string
+        current?: ThemeBool
+        items?: {
+          base?: string
+          item?: string
+        }
+      }
+    }
+  }
+}
 export interface DatetimePickerTheme {
   base: string
   disabled: ThemeBool
@@ -118,6 +184,7 @@ export interface DatetimePickerConfig {
 
 export interface DatetimePickerProps {
   onChange: (range: PublicDateRange) => void
+  theme?: PublicDatePimepickerTheme
   config?: DatetimePickerConfig
 }
 
@@ -162,6 +229,7 @@ export interface ThemeContextProps {
 }
 
 export interface DatetimePickerContext {
+  customTheme?: PublicDatePimepickerTheme | null
   maxDate?: Dayjs | null
   minDate?: Dayjs | null
   disabledDates?: DisabledDate[] | null

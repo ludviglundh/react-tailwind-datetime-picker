@@ -37,10 +37,10 @@ Implemented as of current version:
 * ✅ Min- and Max Date
 * ✅ Disabled Date's
 * ✅ Typescript Support
+* ✅ Custom Theme
 
 Upcoming:
 * ⬜ Localization support using i18n (en & sv works for now)
-* ⬜ Custom Theme
 * ⬜ React-hook-form Support
 
 ## Usage
