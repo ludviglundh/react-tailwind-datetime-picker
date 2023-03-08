@@ -5,9 +5,6 @@
     <img alt="React tailwind datetime picker clock icon" src="https://raw.githubusercontent.com/ludviglundh/react-tailwind-datetime-picker/main/assets/clock.svg?raw=true" width="100px">
   </div>
   <br />
-  <p align="center">
-    ⚠️ Please note that this is a work in progress
-  </p>
 </p>
 
 
