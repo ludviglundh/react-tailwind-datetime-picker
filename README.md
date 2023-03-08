@@ -102,7 +102,7 @@ const App = () => {
     setValue(nextValue)
   }
 
-  const theme = {
+  const customTheme = {
     calendar: {
       base: 'flex flex-1 max-md:h-full dark:text-red-600'
     },
@@ -110,7 +110,7 @@ const App = () => {
 
   return (
     <div>
-      <DatetimePicker theme={} onChange={handleValueChange} value={setValue} />
+      <DatetimePicker theme={customTheme} onChange={handleValueChange} value={setValue} />
     </div>
   )
 }
