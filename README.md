@@ -28,13 +28,13 @@ Make sure to also install the peer dependencies as well.
 
 
 ## Features and Pipeline
-Implemented as of current version:
+Implemented as of latest version:
 * ✅ Timepicker
 * ✅ Dark mode
 * ✅ Min- and Max Date
 * ✅ Disabled Date's
 * ✅ Typescript Support
-* ✅ Custom Theme
+* ✅ Custom Theme - Gives you total control over the styling
 
 Upcoming:
 * ⬜ Localization support using i18n (en & sv works for now)
@@ -86,3 +86,34 @@ export default App
 
 **Dark Mode**
 ![Dark Mode](https://raw.githubusercontent.com/ludviglundh/react-tailwind-datetime-picker/main/assets/dark-mode.png?raw=true)
+
+**Custom Theme**
+```javascript
+import { useState } from 'react'
+import DatetimePicker from 'react-tailwind-datetime-picker'
+
+const App = () => {
+  const [value, setValue] = useState({
+    start: new Date() || null,
+    end: new Date().setMonth(1) || null
+  })
+
+  const handleValueChange = (nextValue) => {
+    setValue(nextValue)
+  }
+
+  const theme = {
+    calendar: {
+      base: 'flex flex-1 max-md:h-full dark:text-red-600'
+    },
+  }
+
+  return (
+    <div>
+      <DatetimePicker theme={} onChange={handleValueChange} value={setValue} />
+    </div>
+  )
+}
+
+export default App
+```
